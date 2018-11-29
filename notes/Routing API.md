@@ -2,7 +2,7 @@
 
 There's multiple approaches to how I want to handle the routing APIs.
 
-Though all of them are subject to change and be disgarded in favor of a different or combination of all of them.
+Though all of them are subject to change and be disregarded in favor of a different approach or combination of all of them.
 
 I just want to get it down before I forget.
 
@@ -19,7 +19,7 @@ route([
 
 ```
 
-This idea is a step in the direction I can see it going but it's just not quite there yet, to much overhead and to much going on, I feel like I want to make it simpler.
+This idea is a step in the "_right_" direction but it's just not quite there yet, to much overhead and to much going on, I feel like I want to make it simpler.
 
 ## Idea 2
 
