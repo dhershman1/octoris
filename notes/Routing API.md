@@ -42,12 +42,13 @@ route([home])
 We could even break it down in a similar fashing like this:
 
 ```js
-const { route, matchingPath, methods } = require('octoris/router')
+const { route, matchingPath } = require('octoris/router')
+const { GET, POST } = require('octoris/methods')
 
 // Either it could still follow a similar S Expression
 const home = matchingPath('/home', [
-  [methods.GET, getHandler],
-  [methods.POST, postHandler]
+  [GET, getHandler],
+  [POST, postHandler]
   // Etc...
 ])
 
@@ -55,8 +56,8 @@ const home = matchingPath('/home', [
 // NOTE: This isn't a "you can do it both ways" one or the other!
 
 const about = matchingPath('/about', [
-  methods.GET(getHandler),
-  methods.POST(postHandler)
+  GET(getHandler),
+  POST(postHandler)
   // Etc...
 ])
 ```
