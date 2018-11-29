@@ -23,7 +23,9 @@ It is undetermined if this is how middleware will be given to the primary functi
 I am thinking about possibly introducing helper functions to do something like this.
 
 ```js
+const octoris = require('octoris')
 const { use } = require('octoris/helpers')
+
 const routes = require('./routes')
 
 const app = {}
@@ -39,3 +41,21 @@ octoris({
 This is also subject to change and it's not even a fully fleshed out accepted idea yet! This doesn't feel like the best way to break this down and there may be room for improvements.
 
 I will move this over to the middleware markdown once I get to the point where I am ready to expand upon it!
+
+Quick side theory for the use helpers:
+
+```js
+const octoris = require('octoris')
+const { use } = require('octoris/helpers')
+
+const routes = require('./routes')
+
+const app = octoris
+
+use(app, [middlewareFn1, middlewareFn2])
+use(app, routes)
+
+app(8080)
+```
+
+Possible addition to the core. Or maybe make it so routes can't be used and are still passed in like: `app(8080, routes)` vs the above.
