@@ -10,9 +10,9 @@ const { redirect, send, setStatus } = require('octoris/response')
 const getHandler = ctx => {
   // Context isn't fleshed out enough yet to nail down an example
   if (!ctx.something) {
-    setStatus(404)
+    const status = setStatus(404)
 
-    return redirect('/')
+    return redirect('/', status)
   }
 
   return send('You did it!')

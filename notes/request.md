@@ -13,9 +13,9 @@ const postHandler = ctx => {
   const data = parse(ctx.data)
 
   if (!data) {
-    setStatus(500)
+    const status = setStatus(500)
 
-    return send('No Data Provided')
+    return send('No Data Provided', status)
   }
 
   return send('Data Saved!')
