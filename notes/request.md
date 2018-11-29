@@ -7,17 +7,15 @@ Whether or not some of the functionality will just be built in and be given to y
 For more info on the response being used below checkout the response markdown!
 ```js
 const { parse } = require('octoris/request')
-const { send, setStatus } = require('octoris/response')
+const { send } = require('octoris/response')
 
 const postHandler = ctx => {
   const data = parse(ctx.data)
 
   if (!data) {
-    const status = setStatus(500)
-
-    return send('No Data Provided', status)
+    return send(500, 'No Data Provided')
   }
 
-  return send('Data Saved!')
+  return send(200, 'Data Saved!')
 }
 ```

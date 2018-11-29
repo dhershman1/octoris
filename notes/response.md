@@ -5,16 +5,14 @@ Response will be something you can use to create a response and return it to a c
 Like everything it will build out to it's own modules:
 
 ```js
-const { redirect, send, setStatus } = require('octoris/response')
+const { redirect, send } = require('octoris/response')
 
 const getHandler = ctx => {
   // Context isn't fleshed out enough yet to nail down an example
   if (!ctx.something) {
-    const status = setStatus(404)
-
-    return redirect('/', status)
+    return redirect(404, '/')
   }
 
-  return send('You did it!')
+  return send(200, 'You did it!')
 }
 ```
