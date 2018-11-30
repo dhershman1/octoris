@@ -2,9 +2,12 @@
   "name": "octoris",
   "version": "0.1.0",
   "description": "A functional and friendly node http framework",
-  "main": "index.js",
+  "main": "lib",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "directories": {
+    "lib": "lib"
   },
   "repository": {
     "type": "git",
@@ -33,6 +36,7 @@
     "standard": "12.0.1"
   },
   "dependencies": {
-    "kyanite": "0.10.3"
+    "kyanite": "0.10.3",
+    "path-to-regexp": "^2.4.0"
   }
 }
