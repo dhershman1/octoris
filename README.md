@@ -6,6 +6,10 @@ This will hopefully some day soon be my envisioning of a proper functional http 
 
 Check out the notes folder for markdown files containing ideas and thought processes.
 
+## Goal
+
+The goal with octoris is to be both a functional framework and also have no "Magic" happening, no magic strings, or functions, etc. We want you to use the functions and know exactly what is happening when you use that function. We want you to be able to back track and know what is happening with whatever you send that function.
+
 ## Contribute
 
 [Checkout the contribute file here](https://github.com/dhershman1/octoris/blob/master/.github/CONTRIBUTING.md)
