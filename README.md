@@ -8,4 +8,6 @@ Check out the notes folder for markdown files containing ideas and thought proce
 
 ## Contribute
 
-Wanna help out and make this thing a well... Thing? Feel free to pitch ideas in the issues section!
+[Checkout the contribute file here](https://github.com/dhershman1/octoris/blob/master/.github/CONTRIBUTING.md)
+
+Please check this file regularly as it is **Subject to change** and **updated** as the project continues to develop and grow!
