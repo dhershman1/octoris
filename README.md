@@ -6,6 +6,10 @@ This will hopefully some day soon be my envisioning of a proper functional http 
 
 Check out the notes folder for markdown files containing ideas and thought processes.
 
+## Current Phase: Planning
+
+This repo is still in the planning and theory phases! So obviously you shouldn't be using it literally anywhere yet!
+
 ## Goal
 
 The goal with octoris is to be both a functional framework and also have no "Magic" happening, no magic strings, or functions, etc. We want you to use the functions and know exactly what is happening when you use that function. We want you to be able to back track and know what is happening with whatever you send that function.
