@@ -42,21 +42,21 @@ Visit the [core markdown](https://github.com/dhershman1/octoris/blob/master/note
 
 ## routeReducer
 
-So the idea is when you pass `routes` to the `octoris` core function they will look something like this in order to achieve this without the end user manually doing so, we can provide a `routeReducer` function that will take in all the routes to output this for the core function:
+So the idea is when you pass `routes` to the `octoris` core function they will look something like this in order to achieve this without the end user manually doing so, we can provide a `routeReducer` function that will build out a Map object for the core function
 ```js
-{
-  '/home': {
-    get: getHandler,
-    post: postHandler
+Map {
+  Symbol '/home': Map {
+    Symbol get: getHandler,
+    Symbol post: postHandler
   },
-  '/about': {
-    get: getAboutHandler,
-    post: postAboutHandler
+  Symbol '/about': Map {
+    Symbol get: getAboutHandler,
+    Symbol post: postAboutHandler
   },
-  '/item/:id': {
-    get: getItemHandler,
-    post: postItemHandler,
-    put: putItemHandler
+  Symbol '/item/:id': Map {
+    Symbol get: getItemHandler,
+    Symbol post: postItemHandler,
+    Symbol put: putItemHandler
   }
 }
 ```
