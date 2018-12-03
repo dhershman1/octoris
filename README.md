@@ -6,7 +6,9 @@ This will hopefully some day soon be my envisioning of a proper functional http 
 
 Check out the notes folder for markdown files containing ideas and thought processes.
 
-## Current Phase: Planning
+## Current Phase: Planning/POC
+
+(POC: Proof of Concept)
 
 This repo is still in the planning and theory phases! So obviously you shouldn't be using it literally anywhere yet!
 
