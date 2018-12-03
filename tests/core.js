@@ -1,13 +1,18 @@
 const octoris = require('../lib')
+const { send } = require('../lib/response')
 const { route, routeReducer } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
 
 function homeHandler (ctx) {
-  console.log('home', ctx)
+  return send(200, 'Hello Home!')
 }
 
 function aboutHandler (ctx) {
-  console.log('about', ctx)
+  return send(200, 'Hello About!')
+}
+
+function aboutPost () {
+  return send(200, 'Hello About Post!')
 }
 
 const home = route('/home', [
@@ -16,7 +21,7 @@ const home = route('/home', [
 
 const about = route('/about', [
   GET(aboutHandler),
-  POST(aboutHandler)
+  POST(aboutPost)
 ])
 
 octoris({ port: 3000 }, routeReducer([home, about]))

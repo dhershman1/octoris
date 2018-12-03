@@ -38,6 +38,20 @@ This will return a function of some kind this will be expecting `middleware` & t
 
 `octoris` will handle creating the wrapper to make things work with the `http` package.
 
+If you have multiple routes split between files you can do this: (Assuming both route js files look like the above code but instead of using `routeReducer` you would just wrap them in an array)
+
+```js
+const { octoris } = require('octoris')
+const { routeReducer } = require('octoris/router')
+
+// Instead of using routeReducer these would just return arrays
+const htmlRoutes = require('./routes/html')
+const apiRoutes = require('./routes/api')
+
+// Then we can copy both route collections into a new array for routeReducer
+octoris({ port: 8080 }, routeReducer([...htmlRoutes, ...apiRoutes]))
+```
+
 Visit the [core markdown](https://github.com/dhershman1/octoris/blob/master/notes/core.md) file to view more info on this process.
 
 ## routeReducer
