@@ -1,5 +1,5 @@
 const debug = require('debug')('octoris:route:test')
-const inject = require('light-my-request')
+const { inject } = require('../lib/utils')
 const { send } = require('../lib/response')
 const { route, routeReducer } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
@@ -23,13 +23,9 @@ const about = route('/about', [
 
 const dispatch = routeReducer([home, about])
 
-inject(dispatch, { method: 'get', url: '/home' }, (err, res) => {
-  if (err) {
-    debug('An Error happened %o', err)
-  } else {
-    debug('Success! %o', res)
-  }
-})
+inject({ method: 'get', url: '/home' }, dispatch)
+  .then(res => debug('Success! %o', res))
+  .catch(err => debug('An error happened %o', err))
 
 // debug(routeReducer([home, about]))
 
