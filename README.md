@@ -14,6 +14,13 @@ This repo is still in the planning and theory phases! So obviously you shouldn't
 
 The goal with octoris is to be both a functional framework and also have no "Magic" happening, no magic strings, or functions, etc. We want you to use the functions and know exactly what is happening when you use that function. We want you to be able to back track and know what is happening with whatever you send that function.
 
+## Testing
+
+Finally! Some POC Code is being added! Currently you can do the following (After you clone the repo and `npm i` in the directory):
+
+- `npm run routing` - This will give you a nice log of an example route map built by `octoris`
+- More coming soon!
+
 ## Contribute
 
 [Checkout the contribute file here](https://github.com/dhershman1/octoris/blob/master/.github/CONTRIBUTING.md)
