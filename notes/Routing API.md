@@ -11,9 +11,10 @@ All of the below is **Subject to change**
 > Note (12/3/2018): Adding in the theory of a `routeReducer` function
 
 We bring in the `route` function to create a route and method listeners for it
+Please note: `dynamicRoute` you see below is an idea-in-process
 ```js
-const { route, routeReducer } = require('octoris/router')
-const { GET, POST } = require('octoris/methods')
+const { route, dynamicRoute, routeReducer } = require('octoris/router')
+const { GET, POST, PUT } = require('octoris/methods')
 
 const about = route('/about', [
   GET(getAboutHandler),
@@ -24,7 +25,7 @@ const home = route('/home', [
   GET(getHomeHandler)
 ])
 
-const item = route('/item/:id', [
+const item = dynamicRoute('/item/:id', [
   GET(getItemHandler),
   POST(postItemHandler),
   PUT(putItemHandler)
@@ -50,12 +51,12 @@ So the idea is when you pass `routes` to the `octoris` core function they will l
   },
   '/about': {
     get: getAboutHandler,
-    put: putAboutHandler,
     post: postAboutHandler
   },
   '/item/:id': {
     get: getItemHandler,
-    post: postItemHandler
+    post: postItemHandler,
+    put: putItemHandler
   }
 }
 ```
