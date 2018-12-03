@@ -18,7 +18,9 @@ octoris({
 
 **Important**: As per usual this is subject to change as we tweak and continue to enhance the framework
 
-It is undetermined if this is how middleware will be given to the primary function this way or not.
+## Theory
+
+It is undetermined if this is how middleware will be given to the core function this way or not.
 
 I am thinking about possibly introducing helper functions to do something like this.
 
@@ -42,7 +44,7 @@ This is also subject to change and it's not even a fully fleshed out accepted id
 
 I will move this over to the middleware markdown once I get to the point where I am ready to expand upon it!
 
-Quick side theory for the use helpers:
+~~Quick side theory for the use helpers:~~ I actually don't think I want to do things this way as its bad and not true form functional. Leaving it here for now
 
 ```js
 const octoris = require('octoris')

@@ -8,58 +8,58 @@ I just want to get it down before I forget.
 
 All of the below is **Subject to change**
 
-## Idea 1
+> Note (12/3/2018): Adding in the theory of a `routeReducer` function
 
+We bring in the `route` function to create a route and method listeners for it
 ```js
-const { route, matchingPath, matchingMethod } = require('octoris/router')
-
-route([
-  [matchingPath('/home'), matchingMethod('GET'), handlerFunction]
-])
-
-```
-
-This idea is a step in the "_right_" direction but it's just not quite there yet, to much overhead and to much going on, I feel like I want to make it simpler.
-
-## Idea 2
-
-This one is another way of possibly handling the outcome this in itself also has multiple ways we could go.
-
-```js
-const { route, matchingPath, matchingMethod } = require('octoris/router')
-
-const home = matchingPath('/home', [
-  [matchingMethod('GET'), getHandler],
-  [matchingMethod('POST'), postHanlder],
-  [matchingMethod('PUT'), putHandler]
-  // Etc...
-])
-
-// An array of route functions generated like the one above
-route([home])
-```
-
-We could even break it down in a similar fashing like this:
-
-```js
-const { route, matchingPath } = require('octoris/router')
+const { route, routeReducer } = require('octoris/router')
 const { GET, POST } = require('octoris/methods')
 
-// Either it could still follow a similar S Expression
-const home = matchingPath('/home', [
-  [GET, getHandler],
-  [POST, postHandler]
-  // Etc...
+const about = route('/about', [
+  GET(getAboutHandler),
+  POST(postAboutHandler)
 ])
 
-// Or we can go the route of passing the handler to our method directly
-// NOTE: This isn't a "you can do it both ways" one or the other!
-
-const about = matchingPath('/about', [
-  GET(getHandler),
-  POST(postHandler)
-  // Etc...
+const home = route('/home', [
+  GET(getHomeHandler)
 ])
+
+const item = route('/item/:id', [
+  GET(getItemHandler),
+  POST(postItemHandler),
+  PUT(putItemHandler)
+])
+
+module.exports = routeReducer([about, home, item])
 ```
 
-I think this idea is a further step in the right direction for what I am shooting for though I can't help but feel like it's still a bit overly complex, and slightly annoying?
+This will return a function of some kind this will be expecting `middleware` & the `context object`, the routes that are generated from the `route` function are put into an array and given to the `octoris` function.
+
+`octoris` will handle creating the wrapper to make things work with the `http` package.
+
+Visit the [core markdown](https://github.com/dhershman1/octoris/blob/master/notes/core.md) file to view more info on this process.
+
+## routeReducer
+
+So the idea is when you pass `routes` to the `octoris` core function they will look something like this in order to achieve this without the end user manually doing so, we can provide a `routeReducer` function that will take in all the routes to output this for the core function:
+```js
+{
+  '/home': {
+    get: getHandler,
+    post: postHandler
+  },
+  '/about': {
+    get: getAboutHandler,
+    put: putAboutHandler,
+    post: postAboutHandler
+  },
+  '/item/:id': {
+    get: getItemHandler,
+    post: postItemHandler
+  }
+}
+```
+
+This will make it easy for the core to piece together very lightweight logic to get routing up and running!
+
+Obviously the above means we will most likely need to make some tweaks to **_HOW_** exactly the route method works, since we want to avoid the end user doing this manually.
