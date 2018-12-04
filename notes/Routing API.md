@@ -11,21 +11,22 @@ All of the below is **Subject to change**
 > Note (12/3/2018): Adding in the theory of a `routeReducer` function
 
 We bring in the `route` function to create a route and method listeners for it
-Please note: `dynamicRoute` you see below is an idea-in-process
+
+with it we have helpers like `static` and `param` to build dynamic routes
 ```js
-const { route, dynamicRoute, routeReducer } = require('octoris/router')
+const { static, param, route, routeReducer } = require('octoris/router')
 const { GET, POST, PUT } = require('octoris/methods')
 
-const about = route('/about', [
+const about = route([static('about')], [
   GET(getAboutHandler),
   POST(postAboutHandler)
 ])
 
-const home = route('/home', [
+const home = route([static('home')], [
   GET(getHomeHandler)
 ])
 
-const item = dynamicRoute('/item/:id', [
+const item = route([static('item'), param('id')], [
   GET(getItemHandler),
   POST(postItemHandler),
   PUT(putItemHandler)
@@ -59,15 +60,15 @@ Visit the [core markdown](https://github.com/dhershman1/octoris/blob/master/note
 So the idea is when you pass `routes` to the `octoris` core function they will look something like this in order to achieve this without the end user manually doing so, we can provide a `routeReducer` function that will build out a Map object for the core function
 ```js
 Map {
-  Symbol('/home'): Map {
+  'home': Map {
     Symbol('get'): getHandler,
     Symbol('post'): postHandler
   },
-  Symbol('/about'): Map {
+  'about': Map {
     Symbol('get'): getAboutHandler,
     Symbol('post'): postAboutHandler
   },
-  Symbol('/item/:id'): Map {
+  '/item/:id': Map {
     Symbol('get'): getItemHandler,
     Symbol('post'): postItemHandler,
     Symbol('put'): putItemHandler
