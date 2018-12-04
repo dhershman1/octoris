@@ -18,6 +18,8 @@ The goal with octoris is to be both a functional framework and also have no "Mag
 
 ## Testing
 
+**These are currently broken due to the routing re kajiggering I am in the middle of**
+
 Finally! Some POC Code is being added! Currently you can do the following (After you clone the repo and `npm i` in the directory)
 
 All of these commands are ran with `debug` for output logging
