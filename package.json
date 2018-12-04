@@ -41,7 +41,7 @@
   "dependencies": {
     "encodeurl": "1.0.2",
     "kyanite": "0.10.3",
-    "light-my-request": "^3.1.0",
+    "light-my-request": "3.1.0",
     "path-to-regexp": "2.4.0",
     "safe-buffer": "5.1.2"
   }
