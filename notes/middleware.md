@@ -37,13 +37,13 @@ octoris({ port: 8080, middleware: [someMiddleware] }, routes)
 
 The problem here is, well is it still an intuitive way to handle it? And again is this friendly to all sorts of middleware?
 
-## Via helpers
+## Via utils
 
 I mentioned before the idea of helper functions like `use` well what if we used something similar here?
 
 ```js
 const octoris = require('octoris')
-const { use } = require('octoris/helpers')
+const { use } = require('octoris/utils')
 const someMiddleware = require('someMiddleware')
 const routes = require('./routes')
 
@@ -56,13 +56,13 @@ The problem here is that maybe this is to complex? Overkill even for what we wan
 
 Then the point of what even is main here? What could it be? I'm not a huge fan, but this follows a pattern more close to express like.
 
-## Via helpers and within methods
+## Via utils and within methods
 
 This leads me to another option what if we applied middleware to our methods on the route level? Or well gave the _ability_ too!
 
 ```js
 const { route, static } = require('octoris/router')
-const { use } = require('octoris/helpers')
+const { use } = require('octoris/utils')
 const { GET, POST } = require('octoris/methods')
 const someMiddleware = require('someMiddleware')
 const someAuthMiddleware = require('someAuthMiddleware')

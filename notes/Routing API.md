@@ -9,6 +9,7 @@ I just want to get it down before I forget.
 All of the below is **Subject to change**
 
 > Note (12/3/2018): Adding in the theory of a `routeReducer` function
+> Note (12/7/2018): Adding in the theory of using a Radix Tree for routes
 
 We bring in the `route` function to create a route and method listeners for it
 
@@ -72,6 +73,36 @@ Map {
     Symbol('get'): getItemHandler,
     Symbol('post'): postItemHandler,
     Symbol('put'): putItemHandler
+  }
+}
+```
+
+What I am thinking on a similar page to this is that instead of a simple string map layout I want to go with more of a [Radix Tree](https://en.wikipedia.org/wiki/Radix_tree) layout
+
+So rather than something like:
+
+```js
+Map {
+  'home': Map {
+    Symbol('get'): getHandler
+  },
+  'home/id': Map {
+    Symbol('get'): getHandler,
+    Symbol('post'): postHandler
+  }
+}
+```
+
+We would structure it out to be more tree like: (This is far from the final cut of the plan obviously)
+
+```js
+Map {
+  'home': Map {
+    Symbol('get'): getHandler,
+    'id': Map {
+      Symbol('get'): getHandler,
+      Symbol('post'): postHandler
+    }
   }
 }
 ```
