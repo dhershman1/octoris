@@ -1,33 +1,57 @@
-const debug = require('debug')('octoris:route:test')
-const { inject } = require('../lib/utils/inject')
+const debug = require('debug')('octo:route:test')
+const { inject } = require('../lib/utils')
 const { send } = require('../lib/response')
-const { route, static, param } = require('../lib/router')
+const { route, static, routeReducer, concatRoutes } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
 
 function homeHandler (ctx) {
-  return send(200, `Hello World!`)
+  return send(200, 'Hello World!')
 }
 
 function aboutHandler (ctx) {
-  console.log('about', ctx)
+  return send(200, 'About World!')
 }
 
-const home = route([static('home'), static('account')])([
-  GET(homeHandler)
+function accHandler (ctx) {
+  return send(200, 'Account World!')
+}
+
+function dashHandler (ctx) {
+  return send(200, 'Dashboard World!')
+}
+
+const home = route([static('home')], [
+  GET(homeHandler),
+  POST(homeHandler)
 ])
 
-// const about = route('/about', [
-//   GET(aboutHandler),
-//   POST(aboutHandler)
-// ])
+const account = route([static('account')], [
+  GET(accHandler)
+])
 
+const dash = route([static('dashboard')], [
+  GET(dashHandler)
+])
 
-// const dispatch = routeReducer([home, about])
+const about = route([static('about')], [
+  GET(aboutHandler),
+  POST(aboutHandler)
+])
 
-// inject({ method: 'get', url: '/home' }, dispatch)
-//   .then(res => debug('Success! %o', res))
-//   .catch(err => debug('An error happened %o', err))
+const main = concatRoutes([home], [account, dash])
 
-// debug(routeReducer([home, about]))
+debug(main)
 
+const reduced = routeReducer([main, about])
 
+inject({ method: 'GET', url: '/home' }, reduced)
+  .then(res => debug('Success! %o', res.body))
+  .catch(err => debug('An error happened %o', err))
+
+inject({ method: 'GET', url: '/home/account' }, reduced)
+  .then(res => debug('Success! %o', res.body))
+  .catch(err => debug('An error happened %o', err))
+
+inject({ method: 'GET', url: '/home/dashboard' }, reduced)
+  .then(res => debug('Success! %o', res.body))
+  .catch(err => debug('An error happened %o', err))
