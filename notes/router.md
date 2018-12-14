@@ -100,11 +100,11 @@ So rather than something like:
 ```js
 Map {
   'home': Map {
-    Symbol('get'): getHandler
+    'GET': getHandler
   },
   'home/id': Map {
-    Symbol('get'): getHandler,
-    Symbol('post'): postHandler
+    'GET': getHandler,
+    'POST': postHandler
   }
 }
 ```
@@ -114,19 +114,18 @@ We would structure it out to be more tree like: (This is far from the final cut 
 ```js
 Map {
   'home': Map {
-    optional: false,
     type: 'static',
     optional: false,
     methods: Map {
-      Symbol('get'): getHandler,
+      'GET': getHandler,
     }
     'id': Map {
       name: 'id',
       type: 'param',
       optional: false,
       methods: Map {
-        Symbol('get'): getHandler,
-        Symbol('post'): postHandler
+        'GET': getHandler,
+        'POST': postHandler
       }
     }
   }
