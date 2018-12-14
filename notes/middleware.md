@@ -4,9 +4,11 @@ The middleware engine will be a good chunk of the project to provide a great and
 
 There's a few questions we need to answer with middleware:
 
-## Via utils and within methods
+## Engine
 
-This leads me to another option what if we applied middleware to our methods on the route level? Or well gave the _ability_ too!
+The engine idea currently looks a little like this, using the "use" util
+
+> **Note** This may be moved to the `octoris/middleware` if the need for more functionality in this area grows
 
 ```js
 const { route, static } = require('octoris/router')
@@ -15,7 +17,7 @@ const { GET, POST } = require('octoris/methods')
 const someMiddleware = require('someMiddleware')
 const someAuthMiddleware = require('someAuthMiddleware')
 
-route([status('home')], [
+route([static('home')], [
   GET(getHomeHandler),
   use(someMiddleware),
 
@@ -24,7 +26,7 @@ route([status('home')], [
 ])
 
 // Or possibly ?
-route([status('home')], [
+route([static('home')], [
   [GET(getHomeHandler), use(someMiddleware)],
   [POST(postHomeHandler), use(someAuthMiddleware)]
 ])
