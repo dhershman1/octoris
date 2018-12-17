@@ -11,13 +11,13 @@ The engine idea currently looks a little like this, using the "use" util
 > **Note** This may be moved to the `octoris/middleware` if the need for more functionality in this area grows
 
 ```js
-const { route, static } = require('octoris/router')
+const { route, fixed } = require('octoris/router')
 const { use } = require('octoris/utils')
 const { GET, POST } = require('octoris/methods')
 const someMiddleware = require('someMiddleware')
 const someAuthMiddleware = require('someAuthMiddleware')
 
-route([static('home')], [
+route([fixed('home')], [
   GET(getHomeHandler),
   use(someMiddleware),
 
@@ -26,7 +26,7 @@ route([static('home')], [
 ])
 
 // Or possibly ?
-route([static('home')], [
+route([fixed('home')], [
   [GET(getHomeHandler), use(someMiddleware)],
   [POST(postHomeHandler), use(someAuthMiddleware)]
 ])

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "route": "DEBUG=octo:* node tests/routing.js",
-    "core": "DEBUG=octo:* node tests/core.js"
+    "core": "DEBUG=octo:* node tests/core.js",
+    "lint:fix": "standard --fix lib/**/*.js",
+    "lint": "standard lib/**/*.js"
   },
   "directories": {
     "lib": "lib"

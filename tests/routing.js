@@ -1,7 +1,7 @@
 const debug = require('debug')('octo:route:test')
 const { inject } = require('../lib/utils')
 const { send } = require('../lib/response')
-const { route, static, param, routeReducer, concatRoutes } = require('../lib/router')
+const { route, fixed, param, routeReducer, concatRoutes } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
 
 function homeHandler (ctx) {
@@ -26,25 +26,25 @@ function placeHandler (ctx) {
   return send(200, `Place World! id: ${ctx.params.id}, thing: ${ctx.params.thing}`)
 }
 
-const home = route([static('home')], [
+const home = route([fixed('home')], [
   GET(homeHandler),
   POST(homeHandler)
 ])
 
-const account = route([static('account')], [
+const account = route([fixed('account')], [
   GET(accHandler)
 ])
 
-const dash = route([static('dashboard')], [
+const dash = route([fixed('dashboard')], [
   GET(dashHandler)
 ])
 
-const about = route([static('about')], [
+const about = route([fixed('about')], [
   GET(aboutHandler),
   POST(aboutHandler)
 ])
 
-const place = route([static('place'), param('id'), param('thing')], [
+const place = route([fixed('place'), param('id'), param('thing')], [
   GET(placeHandler)
 ])
 

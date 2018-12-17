@@ -7,7 +7,7 @@ Most frameworks jump for path-to-regexp for this, but I think we will sport our 
 It would look like this:
 
 ```js
-const { route, static, param } = require('octoris/router')
+const { route, fixed, param } = require('octoris/router')
 const { GET } = require('octoris/methods')
 const { json } = require('octoris/response')
 
@@ -15,12 +15,12 @@ const handler = ctx => {
   return json(200, ctx.params)
 }
 
-const home = route([static('home'), param('id')], [
+const home = route([fixed('home'), param('id')], [
   GET(handler)
 ])
 
 // This also allows for a easy mix
-const about = route([static('about'), param('id'), static('place')], [
+const about = route([fixed('about'), param('id'), fixed('place')], [
   GET(handler)
 ])
 ```
@@ -32,7 +32,7 @@ The functions give us a nice and easy path building system.
 But what about optional params? I got you fam:
 
 ```js
-const { route, static, maybeParam } = require('octoris/router')
+const { route, fixed, maybeParam } = require('octoris/router')
 const { GET } = require('octoris/methods')
 const { json } = require('octoris/response')
 
@@ -40,7 +40,7 @@ const homeHandler = ctx => {
   return json(200, ctx.params)
 }
 
-const home = route([static('home'), maybeParam('id')], [
+const home = route([fixed('home'), maybeParam('id')], [
   GET(homeHandler)
 ])
 ```

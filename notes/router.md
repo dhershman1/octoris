@@ -143,17 +143,17 @@ You can set a prefix route within octoris by using the `concatRoutes` function.
 It may work a little like this:
 
 ```js
-const { concatRoutes, route, routeReducer, static } = require('octoris/router')
+const { concatRoutes, route, routeReducer, fixed } = require('octoris/router')
 const { GET } = require('octoris/method')
 
 // Imagine we need to have 3 routes /home, /home/account, and /home/dashboard
 // You've generated v2 of your app so you want to mark them with v1
 
-const home = route([static('home')], [GET(homeHandler)])
-const account = route([static('account')], [GET(accHandler)])
-const dashboard = route([static('dashboard')], [GET(dashHandler)])
+const home = route([fixed('home')], [GET(homeHandler)])
+const account = route([fixed('account')], [GET(accHandler)])
+const dashboard = route([fixed('dashboard')], [GET(dashHandler)])
 
-const vOne = concatRoutes([static('v1')], [home, account, dashboard])
+const vOne = concatRoutes([fixed('v1')], [home, account, dashboard])
 
 // Now vOne represents: /v1/home, /v1/home/account, and /v1/home/dashboard
 

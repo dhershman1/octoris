@@ -1,6 +1,6 @@
 const octoris = require('../lib')
 const { send } = require('../lib/response')
-const { route, routeReducer, static } = require('../lib/router')
+const { route, routeReducer, fixed } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
 
 function homeHandler (ctx) {
@@ -15,11 +15,11 @@ function aboutPost () {
   return send(200, 'Hello About Post!')
 }
 
-const home = route([static('home')], [
+const home = route([fixed('home')], [
   GET(homeHandler)
 ])
 
-const about = route([static('about')], [
+const about = route([fixed('about')], [
   GET(aboutHandler),
   POST(aboutPost)
 ])
