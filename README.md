@@ -30,7 +30,7 @@ Finally! Some POC Code is being added! Currently you can do the following (After
 All of these commands are ran with `debug` for output logging
 
 - `npm run route` - This will give you a nice log of an example route map built by `octoris`
-- **Broken** `npm run core` - This will run the core of `octoris` with example route maps allows for the test of route builds
+- `npm run core` - This will run the core of `octoris` with example route maps allows for the test of route builds
 - More coming soon!
 
 ## Contribute
