@@ -12,20 +12,25 @@ Check out the notes folder for markdown files containing ideas and thought proce
 
 This repo is still in the planning and theory phases! So obviously you shouldn't be using it literally anywhere yet!
 
-## Goal
+## Planned
 
-The goal with octoris is to be both a functional framework and also have no "Magic" happening, no magic strings, or functions, etc. We want you to use the functions and know exactly what is happening when you use that function. We want you to be able to back track and know what is happening with whatever you send that function.
+Planned functionality and features looks a little like this at the moment:
+
+- Fully functional from the ground up, build routes with pipes/reducers/etc
+- An easy to use injection method for integration testing
+- A swagger like setup for open api documentation of your app
+- Fast Radix Tree esk based routing
+- No `magic` like strings everything runs through functions to prime it for what it needs to do
+- And much more! (I will list them here as needed)
 
 ## Testing
-
-**These are currently broken due to the routing re kajiggering I am in the middle of**
 
 Finally! Some POC Code is being added! Currently you can do the following (After you clone the repo and `npm i` in the directory)
 
 All of these commands are ran with `debug` for output logging
 
 - `npm run route` - This will give you a nice log of an example route map built by `octoris`
-- `npm run core` - This will run the core of `octoris` with example route maps allows for the test of route builds
+- **Broken** `npm run core` - This will run the core of `octoris` with example route maps allows for the test of route builds
 - More coming soon!
 
 ## Contribute
