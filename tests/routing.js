@@ -13,6 +13,7 @@ function aboutHandler (ctx) {
 }
 
 function accHandler (ctx) {
+  debug('QUERY PARAMS! %o', ctx.query)
   return send(200, 'Account World!')
 }
 
@@ -55,7 +56,7 @@ inject({ method: 'GET', url: '/home' }, reduced)
   .then(res => debug('Success! %o', res.body))
   .catch(err => debug('An error happened %o', err))
 
-inject({ method: 'GET', url: '/home/account' }, reduced)
+inject({ method: 'GET', url: '/home/account?id=123' }, reduced)
   .then(res => debug('Success! %o', res.body))
   .catch(err => debug('An error happened %o', err))
 
