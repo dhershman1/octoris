@@ -2,7 +2,7 @@
   "name": "octoris",
   "version": "0.1.0",
   "description": "A functional and friendly node http framework",
-  "main": "lib",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "route": "DEBUG=octo:* node tests/routing.js",
