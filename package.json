@@ -45,6 +45,7 @@
     "kyanite": "0.10.3",
     "light-my-request": "3.1.0",
     "path-to-regexp": "2.4.0",
-    "safe-buffer": "5.1.2"
+    "safe-buffer": "5.1.2",
+    "uri-js": "^4.2.2"
   }
 }

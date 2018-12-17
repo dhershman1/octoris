@@ -52,18 +52,18 @@ const main = concatRoutes([home], [account, dash])
 
 const reduced = routeReducer([main, about, place])
 
-inject({ method: 'GET', url: '/home' }, reduced)
+inject({ method: 'GET', url: '/home?id=123' }, reduced)
   .then(res => debug('Success! %o', res.body))
   .catch(err => debug('An error happened %o', err))
 
-inject({ method: 'GET', url: '/home/account?id=123' }, reduced)
-  .then(res => debug('Success! %o', res.body))
-  .catch(err => debug('An error happened %o', err))
+// inject({ method: 'GET', url: '/home/account?id=123' }, reduced)
+//   .then(res => debug('Success! %o', res.body))
+//   .catch(err => debug('An error happened %o', err))
 
-inject({ method: 'GET', url: '/home/dashboard' }, reduced)
-  .then(res => debug('Success! %o', res.body))
-  .catch(err => debug('An error happened %o', err))
+// inject({ method: 'GET', url: '/home/dashboard' }, reduced)
+//   .then(res => debug('Success! %o', res.body))
+//   .catch(err => debug('An error happened %o', err))
 
-inject({ method: 'GET', url: '/place/123/foo' }, reduced)
-  .then(res => debug('Success! %o', res.body))
-  .catch(err => debug('An error happened %o', err))
+// inject({ method: 'GET', url: '/place/123/foo' }, reduced)
+//   .then(res => debug('Success! %o', res.body))
+//   .catch(err => debug('An error happened %o', err))
