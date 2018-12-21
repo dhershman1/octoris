@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "route": "DEBUG=octo:* node tests/routing.js",
-    "core": "DEBUG=octo:* node tests/core.js",
+    "route": "cross-env DEBUG=octo:* node tests/routing.js",
+    "core": "cross-env DEBUG=octo:* node tests/core.js",
     "lint:fix": "standard --fix lib/**/*.js",
     "lint": "standard lib/**/*.js"
   },
