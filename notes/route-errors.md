@@ -15,10 +15,10 @@ I am most likely going to be working directly with the modle [https-errors](http
 The catch all can handle something that is missed in your routes It will be something like this:
 ```js
 // A catch all
-const { route, static, catchAll, routeReducer } = require('octoris/routes')
+const { route, fixed, catchAll, routeReducer } = require('octoris/routes')
 const { GET } = require('octoris/methods')
 
-const home = route([statis('home')], [
+const home = route([fixed('home')], [
   GET(getHandler)
 ])
 

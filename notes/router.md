@@ -10,24 +10,24 @@ All of the below is **Subject to change**
 
 We bring in the `route` function to create a route and method listeners for it
 
-with it we have helpers like `static` and `param` to build dynamic routes
+with it we have helpers like `fixed` and `param` to build dynamic routes
 ```js
-const { static, param, route, routeReducer } = require('octoris/router')
+const { fixed, param, route, routeReducer } = require('octoris/router')
 const { GET, POST, PUT } = require('octoris/methods')
 
 // /about
-const about = route([static('about')], [
+const about = route([fixed('about')], [
   GET(getAboutHandler),
   POST(postAboutHandler)
 ])
 
 // /home
-const home = route([static('home')], [
+const home = route([fixed('home')], [
   GET(getHomeHandler)
 ])
 
 // /item/:id
-const item = route([static('item'), param('id')], [
+const item = route([fixed('item'), param('id')], [
   GET(getItemHandler),
   POST(postItemHandler),
   PUT(putItemHandler)
@@ -63,13 +63,13 @@ Above we mentinoed about these functions also expecting middleware, well as spec
 With the use of utils to specifiy middleware within a route pipe of some kind. It may look something like this:
 
 ```js
-const { static, param, route, routeReducer } = require('octoris/router')
+const { fixed, param, route, routeReducer } = require('octoris/router')
 const { GET, POST } = require('octoris/methods')
 // You can also just use kyanites pipe since these are the same
 const { pipe, use } = require('octoris/utils')
 const someMiddleware = require('some-middleware')
 
-const homePath = route([static('home')])
+const homePath = route([fixed('home')])
 const getHome = pipe([
   homePath,
   GET(homeHandler),
