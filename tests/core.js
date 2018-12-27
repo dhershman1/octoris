@@ -2,6 +2,14 @@ const octoris = require('../lib')
 const { send } = require('../lib/response')
 const { route, routeReducer, fixed } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
+const logger = require('pino')({
+  name: 'core:test',
+  timestamp: false,
+  base: {
+    pid: null,
+    hostname: null
+  }
+})
 
 function homeHandler (ctx) {
   return send(200, 'Hello Home!')
@@ -25,5 +33,5 @@ const about = route([fixed('about')], [
 ])
 
 octoris({ port: 3000 }, routeReducer([home, about]))
-  .then(() => console.log('Server Running'))
-  .catch(console.error)
+  .then(() => logger.info('Server Running'))
+  .catch(logger.error)

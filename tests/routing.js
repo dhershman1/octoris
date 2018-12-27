@@ -1,5 +1,5 @@
 const logger = require('pino')({
-  name: 'octo:route:test',
+  name: 'route:test',
   timestamp: false,
   base: {
     pid: null,
