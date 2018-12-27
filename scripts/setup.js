@@ -1,11 +1,18 @@
 const fs = require('fs')
 const path = require('path')
 const globby = require('globby')
-const debug = require('debug')('octo:scripts')
+const logger = require('pino')({
+  name: 'octo:scripts',
+  timestamp: false,
+  base: {
+    pid: null,
+    hostname: null
+  }
+})
 
 globby(['lib/**/*.js', '!lib/_internals']).then(d => {
   const __p = __dirname.replace('/scripts', '')
-  debug('Path %s', __p)
+  logger.info('Path %s', __p)
 
   d.forEach(x => {
     const parsedPath = path.parse(x)
@@ -18,7 +25,7 @@ globby(['lib/**/*.js', '!lib/_internals']).then(d => {
         throw err
       }
 
-      debug('Copied %s', name)
+      logger.info('Copied %s', name)
     })
   })
 })

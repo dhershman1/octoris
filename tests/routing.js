@@ -1,4 +1,11 @@
-const debug = require('debug')('octo:route:test')
+const logger = require('pino')({
+  name: 'octo:route:test',
+  timestamp: false,
+  base: {
+    pid: null,
+    hostname: null
+  }
+})
 const { inject } = require('../lib/utils')
 const { send } = require('../lib/response')
 const { route, fixed, param, routeReducer, concatRoutes } = require('../lib/router')
@@ -13,7 +20,7 @@ function aboutHandler (ctx) {
 }
 
 function accHandler (ctx) {
-  debug('QUERY PARAMS! %o', ctx.query)
+  logger.info('QUERY PARAMS! %o', ctx.query)
   return send(200, 'Account World!')
 }
 
@@ -22,7 +29,7 @@ function dashHandler (ctx) {
 }
 
 function placeHandler (ctx) {
-  debug('Params: %o', ctx.params)
+  logger.info('Params: %o', ctx.params)
   return send(200, `Place World! id: ${ctx.params.id}, thing: ${ctx.params.thing}`)
 }
 
@@ -53,17 +60,17 @@ const main = concatRoutes([home], [account, dash])
 const reduced = routeReducer([main, about, place])
 
 inject({ method: 'GET', url: '/home?id=123' }, reduced)
-  .then(res => debug('Success! %o', res.body))
-  .catch(err => debug('An error happened %o', err))
+  .then(res => logger.info('Success! %o', res.body))
+  .catch(err => logger.error('An error happened %o', err))
 
 inject({ method: 'GET', url: '/home/account?id=123' }, reduced)
-  .then(res => debug('Success! %o', res.body))
-  .catch(err => debug('An error happened %o', err))
+  .then(res => logger.info('Success! %o', res.body))
+  .catch(err => logger.error('An error happened %o', err))
 
 inject({ method: 'GET', url: '/home/dashboard' }, reduced)
-  .then(res => debug('Success! %o', res.body))
-  .catch(err => debug('An error happened %o', err))
+  .then(res => logger.info('Success! %o', res.body))
+  .catch(err => logger.error('An error happened %o', err))
 
 inject({ method: 'GET', url: '/place/123/foo' }, reduced)
-  .then(res => debug('Success! %o', res.body))
-  .catch(err => debug('An error happened %o', err))
+  .then(res => logger.info('Success! %o', res.body))
+  .catch(err => logger.error('An error happened %o', err))
