@@ -1,11 +1,4 @@
-const logger = require('pino')({
-  name: 'route:test',
-  timestamp: false,
-  base: {
-    pid: null,
-    hostname: null
-  }
-})
+const logger = require('pino')({ name: 'route:test' })
 const { inject } = require('../lib/utils')
 const { send } = require('../lib/response')
 const { route, fixed, param, routeReducer, concatRoutes } = require('../lib/router')
@@ -63,14 +56,14 @@ inject({ method: 'GET', url: '/home?id=123' }, reduced)
   .then(res => logger.info('Success! %o', res.body))
   .catch(err => logger.error('An error happened %o', err))
 
-inject({ method: 'GET', url: '/home/account?id=123' }, reduced)
-  .then(res => logger.info('Success! %o', res.body))
-  .catch(err => logger.error('An error happened %o', err))
+// inject({ method: 'GET', url: '/home/account?id=123' }, reduced)
+//   .then(res => logger.info('Success! %o', res.body))
+//   .catch(err => logger.error('An error happened %o', err))
 
-inject({ method: 'GET', url: '/home/dashboard' }, reduced)
-  .then(res => logger.info('Success! %o', res.body))
-  .catch(err => logger.error('An error happened %o', err))
+// inject({ method: 'GET', url: '/home/dashboard' }, reduced)
+//   .then(res => logger.info('Success! %o', res.body))
+//   .catch(err => logger.error('An error happened %o', err))
 
-inject({ method: 'GET', url: '/place/123/foo' }, reduced)
-  .then(res => logger.info('Success! %o', res.body))
-  .catch(err => logger.error('An error happened %o', err))
+// inject({ method: 'GET', url: '/place/123/foo' }, reduced)
+//   .then(res => logger.info('Success! %o', res.body))
+//   .catch(err => logger.error('An error happened %o', err))

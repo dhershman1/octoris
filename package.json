@@ -5,11 +5,11 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "route": "node tests/routing.js | pino-pretty",
-    "core": "node tests/core.js | pino-pretty",
+    "route": "node tests/routing.js | pino-colada",
+    "core": "node tests/core.js | pino-colada",
     "lint:fix": "standard --fix lib/**/*.js",
     "lint": "standard lib/**/*.js",
-    "setup": "node scripts/setup.js | pino-pretty",
+    "setup": "node scripts/setup.js | pino-colada",
     "clean": "rimraf ./*.js"
   },
   "directories": {
@@ -38,7 +38,7 @@
   "homepage": "https://github.com/dhershman1/octoris#readme",
   "devDependencies": {
     "globby": "8.0.1",
-    "pino-pretty": "2.5.0",
+    "pino-colada": "1.4.4",
     "rimraf": "2.6.2",
     "standard": "12.0.1"
   },
