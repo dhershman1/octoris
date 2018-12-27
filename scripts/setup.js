@@ -8,21 +8,17 @@ globby(['lib/**/*.js', '!lib/_internals']).then(d => {
   debug('Path %s', __p)
 
   d.forEach(x => {
-    debug(x)
     const parsedPath = path.parse(x)
     const name = parsedPath.name === 'index' && parsedPath.dir !== 'lib'
       ? parsedPath.dir.replace('lib/', '')
       : parsedPath.name
-
-    debug('Parsed: %o', parsedPath)
-    debug('Name %s', name)
 
     fs.copyFile(x, `./${name}.js`, err => {
       if (err) {
         throw err
       }
 
-      debug('Copy Done')
+      debug('Copied %s', name)
     })
   })
 })
