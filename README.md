@@ -1,6 +1,14 @@
-![dna-small](https://user-images.githubusercontent.com/8997380/49382441-6a3a9280-f6e4-11e8-93b0-675e6f77112f.png)
+<h1 align=center>
+  <a href="#" title="Octoris Repo">
+    <img alt="Octoris Logo" src="https://user-images.githubusercontent.com/8997380/49382441-6a3a9280-f6e4-11e8-93b0-675e6f77112f.png">
+  </a>
+</h1>
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+<p align=center>
+  <a href="https://github.com/standard/standard">
+    <img alt="Standard Js" src="https://cdn.rawgit.com/standard/standard/master/badge.svg">
+  </a>
+</p>
 
 This will hopefully some day soon be my envisioning of a proper functional http framework.
 
