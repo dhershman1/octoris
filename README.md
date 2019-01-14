@@ -14,11 +14,11 @@ This will hopefully some day soon be my envisioning of a proper functional http 
 
 Check out the notes folder for markdown files containing ideas and thought processes.
 
-## Current Phase: Planning/POC
+## Current Phase: Early Development/Planning
 
-(POC: Proof of Concept)
+This repo/project is currently in the early stages of development still. Which means there are things that may still change heavily and theory still to be discovered.
 
-This repo is still in the planning and theory phases! So obviously you shouldn't be using it literally anywhere yet!
+There is still concepts that need to be proven and battle tested
 
 ## Planned
 
