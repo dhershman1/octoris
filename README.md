@@ -18,7 +18,7 @@ Check out the notes folder for markdown files containing ideas and thought proce
 
 This repo/project is currently in the early stages of development still. Which means there are things that may still change heavily and theory still to be discovered.
 
-There is still concepts that need to be proven and battle tested
+There is still concepts that needs to be proven and battle tested
 
 ## Planned
 
