@@ -1,10 +1,12 @@
 const logger = require('pino')({ name: 'route:test' })
 const { inject } = require('../lib/utils')
 const { send } = require('../lib/response')
-const { route, fixed, param, routeReducer, concatRoutes } = require('../lib/router')
+const { route, fixed, param, composeRoutes, concatRoutes } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
 
 function homeHandler (ctx) {
+  ctx.logger.info('Success!')
+
   return send(200, 'Hello World!')
 }
 
@@ -50,20 +52,20 @@ const place = route([fixed('place'), param('id'), param('thing')], [
 
 const main = concatRoutes([home], [account, dash])
 
-const reduced = routeReducer([main, about, place])
+const routes = [main, about, place]
 
-inject({ method: 'GET', url: '/home?id=123' }, reduced)
+inject({ method: 'GET', url: '/home?id=123' }, composeRoutes({ logger: true }, routes))
   .then(res => logger.info('Success! %o', res.body))
   .catch(err => logger.error('An error happened %o', err))
 
-inject({ method: 'GET', url: '/home/account?id=123' }, reduced)
-  .then(res => logger.info('Success! %o', res.body))
-  .catch(err => logger.error('An error happened %o', err))
+// inject({ method: 'GET', url: '/home/account?id=123' }, routes)
+//   .then(res => logger.info('Success! %o', res.body))
+//   .catch(err => logger.error('An error happened %o', err))
 
-inject({ method: 'GET', url: '/home/dashboard' }, reduced)
-  .then(res => logger.info('Success! %o', res.body))
-  .catch(err => logger.error('An error happened %o', err))
+// inject({ method: 'GET', url: '/home/dashboard' }, routes)
+//   .then(res => logger.info('Success! %o', res.body))
+//   .catch(err => logger.error('An error happened %o', err))
 
-inject({ method: 'GET', url: '/place/123/foo' }, reduced)
-  .then(res => logger.info('Success! %o', res.body))
-  .catch(err => logger.error('An error happened %o', err))
+// inject({ method: 'GET', url: '/place/123/foo' }, routes)
+//   .then(res => logger.info('Success! %o', res.body))
+//   .catch(err => logger.error('An error happened %o', err))

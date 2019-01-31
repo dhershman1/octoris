@@ -1,7 +1,7 @@
-const octoris = require('../lib')
-const { send } = require('../lib/response')
-const { route, routeReducer, fixed } = require('../lib/router')
-const { GET, POST } = require('../lib/methods')
+const { listen, router, methods, response } = require('../lib')
+const { send } = response
+const { route, fixed } = router
+const { GET, POST } = methods
 const logger = require('pino')({
   name: 'core:test',
   timestamp: false,
@@ -32,6 +32,6 @@ const about = route([fixed('about')], [
   POST(aboutPost)
 ])
 
-octoris({ port: 3000 }, routeReducer([home, about]))
+listen({ port: 3000 }, [home, about])
   .then(() => logger.info('Server Running'))
   .catch(logger.error)
