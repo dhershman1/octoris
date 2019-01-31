@@ -15,7 +15,7 @@ I am most likely going to be working directly with the modle [https-errors](http
 The catch all can handle something that is missed in your routes It will be something like this:
 ```js
 // A catch all
-const { route, fixed, catchAll, routeReducer } = require('octoris/routes')
+const { route, fixed, catchAll, composeRoutes } = require('octoris/routes')
 const { GET } = require('octoris/methods')
 
 const home = route([fixed('home')], [
@@ -24,7 +24,7 @@ const home = route([fixed('home')], [
 
 const all = route([catchAll], catchHandler)
 
-module.exports = routeReducer([home, all])
+module.exports = composeRoutes([home, all])
 ```
 
 Now like all things this is far from the final design idea. I want to fiddle around with how I want it to work overall.

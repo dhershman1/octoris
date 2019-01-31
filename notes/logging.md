@@ -39,7 +39,7 @@ You can find all of the available options/methods in the [Pino API Documentation
 Once you specify `logging` as a either true or an object of options you will have access to logging driectly from the context object
 
 ```js
-const { fixed, route, routeReducer } = require('octoris/router')
+const { fixed, route, composeRoutes } = require('octoris/router')
 const { GET } = require('octoris/methods')
 const { send } = require('octoris/response')
 const octoris = require('octoris')
@@ -55,7 +55,7 @@ const home = route([fixed('home')], [GET(getHandler)])
 octoris({
   port: 8080,
   logging: true
-}, routeReducer([home]))
+}, composeRoutes([home]))
 ```
 
 The above will allow you to log each time `/home` is hit via the client.

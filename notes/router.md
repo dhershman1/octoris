@@ -12,7 +12,7 @@ We bring in the `route` function to create a route and method listeners for it
 
 with it we have helpers like `fixed` and `param` to build dynamic routes
 ```js
-const { fixed, param, route, routeReducer } = require('octoris/router')
+const { fixed, param, route, composeRoutes } = require('octoris/router')
 const { GET, POST, PUT } = require('octoris/methods')
 
 // /about
@@ -33,25 +33,25 @@ const item = route([fixed('item'), param('id')], [
   PUT(putItemHandler)
 ])
 
-module.exports = routeReducer([about, home, item])
+module.exports = composeRoutes([about, home, item])
 ```
 
 This will return a function of some kind this will be expecting `middleware` & the `context object`, the routes that are generated from the `route` function are put into an array and given to the `octoris` function.
 
 `octoris` will handle creating the wrapper to make things work with the `http` package.
 
-If you have multiple routes split between files you can do this: (Assuming both route js files look like the above code but instead of using `routeReducer` you would just wrap them in an array)
+If you have multiple routes split between files you can do this: (Assuming both route js files look like the above code but instead of using `composeRoutes` you would just wrap them in an array)
 
 ```js
 const { octoris } = require('octoris')
-const { routeReducer } = require('octoris/router')
+const { composeRoutes } = require('octoris/router')
 
-// Instead of using routeReducer these would just return arrays
+// Instead of using composeRoutes these would just return arrays
 const htmlRoutes = require('./routes/html')
 const apiRoutes = require('./routes/api')
 
-// Then we can copy both route collections into a new array for routeReducer
-octoris({ port: 8080 }, routeReducer([...htmlRoutes, ...apiRoutes]))
+// Then we can copy both route collections into a new array for composeRoutes
+octoris({ port: 8080 }, composeRoutes([...htmlRoutes, ...apiRoutes]))
 ```
 
 Visit the [core markdown](https://github.com/dhershman1/octoris/blob/master/notes/core.md) file to view more info on this process.
@@ -63,7 +63,7 @@ Above we mentinoed about these functions also expecting middleware, well as spec
 With the use of utils to specifiy middleware within a route pipe of some kind. It may look something like this:
 
 ```js
-const { fixed, param, route, routeReducer } = require('octoris/router')
+const { fixed, param, route, composeRoutes } = require('octoris/router')
 const { GET, POST } = require('octoris/methods')
 // You can also just use kyanites pipe since these are the same
 const { pipe, use } = require('octoris/utils')
@@ -82,16 +82,16 @@ const postHome = pipe([
   use(someMiddleware)
 ])
 
-routeReducer([getHome, postHome])
+composeRoutes([getHome, postHome])
 ```
 
 This is a direction I am considering taking the routing API itself, which means another slight re work of the code I literally JUST got working ... Well...
 
 Check out the middleware notes markdown for more info on how this can be handled.
 
-## routeReducer
+## composeRoutes
 
-So the idea is when you pass `routes` to the `octoris` core function they will look something like this in order to achieve this without the end user manually doing so, we can provide a `routeReducer` function that will build out a Map object for the core function
+So the idea is when you pass `routes` to the `octoris` core function they will look something like this in order to achieve this without the end user manually doing so, we can provide a `composeRoutes` function that will build out a Map object for the core function
 
 What I am thinking on a similar page to this is that instead of a simple string map layout I want to go with more of a [Radix Tree](https://en.wikipedia.org/wiki/Radix_tree) layout
 
@@ -143,7 +143,7 @@ You can set a prefix route within octoris by using the `concatRoutes` function.
 It may work a little like this:
 
 ```js
-const { concatRoutes, route, routeReducer, fixed } = require('octoris/router')
+const { concatRoutes, route, composeRoutes, fixed } = require('octoris/router')
 const { GET } = require('octoris/method')
 
 // Imagine we need to have 3 routes /home, /home/account, and /home/dashboard
@@ -157,5 +157,5 @@ const vOne = concatRoutes([fixed('v1')], [home, account, dashboard])
 
 // Now vOne represents: /v1/home, /v1/home/account, and /v1/home/dashboard
 
-return routeReducer([vOne])
+return composeRoutes([vOne])
 ```
