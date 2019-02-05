@@ -1,5 +1,5 @@
 const logger = require('pino')({ name: 'route:test' })
-const { inject } = require('../lib/utils')
+const { inject } = require('../lib/utils/testing')
 const { send } = require('../lib/response')
 const { route, fixed, param, composeRoutes, concatRoutes } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
