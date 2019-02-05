@@ -9,13 +9,13 @@ The influence comes from stuff like [Fastify](https://www.fastify.io) with built
 Currently all of the functionality exists in the `testing.js` file located within `lib/utils`
 
 ```js
-const testing = require('octoris/utils/testing')
+const testing = require('octoris/utils/debug')
 ```
 
 I plan to probably move this to either:
 
 ```js
-const testing = require('octoris/testing')
+const testing = require('octoris/debug')
 
 // OR
 
@@ -36,7 +36,7 @@ Only the future knows on that front...
 #### Usage
 
 ```js
-const { inject } = require('octoris/utils/testing')
+const { inject } = require('octoris/utils/debug')
 const { send } = require('octoris/response')
 const { route, fixed, composeRoutes } = require('octoris/router')
 const { GET } = require('octoris/methods')
