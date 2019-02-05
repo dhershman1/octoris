@@ -1,11 +1,11 @@
-const logger = require('pino')({ name: 'route:test' })
-const { inject } = require('../lib/utils/testing')
+const { inject } = require('../lib/utils/debug')
 const { send } = require('../lib/response')
 const { route, fixed, param, composeRoutes, concatRoutes } = require('../lib/router')
 const { GET, POST } = require('../lib/methods')
 
 function homeHandler (ctx) {
   ctx.logger.info('Success!')
+  ctx.logger.info(`ID Query: ${ctx.query.id}`)
 
   return send(200, 'Hello World!')
 }
@@ -15,7 +15,6 @@ function aboutHandler (ctx) {
 }
 
 function accHandler (ctx) {
-  logger.info('QUERY PARAMS! %o', ctx.query)
   return send(200, 'Account World!')
 }
 
@@ -24,7 +23,6 @@ function dashHandler (ctx) {
 }
 
 function placeHandler (ctx) {
-  logger.info('Params: %o', ctx.params)
   return send(200, `Place World! id: ${ctx.params.id}, thing: ${ctx.params.thing}`)
 }
 
@@ -54,18 +52,18 @@ const main = concatRoutes([home], [account, dash])
 
 const routes = [main, about, place]
 
-inject({ method: 'GET', url: '/home?id=123' }, composeRoutes({ logger: true }, routes))
-  .then(res => logger.info('Success! %o', res.body))
-  .catch(err => logger.error('An error happened %o', err))
+inject({ method: 'GET', url: '/home?id=123' }, composeRoutes({ logger: { name: 'TESTING:ROUTES' } }, routes))
+  .then(res => console.log('Success! %o', res.body))
+  .catch(err => console.error('An error happened %o', err))
 
 // inject({ method: 'GET', url: '/home/account?id=123' }, routes)
-//   .then(res => logger.info('Success! %o', res.body))
-//   .catch(err => logger.error('An error happened %o', err))
+//   .then(res => console.log('Success! %o', res.body))
+//   .catch(err => console.error('An error happened %o', err))
 
 // inject({ method: 'GET', url: '/home/dashboard' }, routes)
-//   .then(res => logger.info('Success! %o', res.body))
-//   .catch(err => logger.error('An error happened %o', err))
+//   .then(res => console.log('Success! %o', res.body))
+//   .catch(err => console.error('An error happened %o', err))
 
 // inject({ method: 'GET', url: '/place/123/foo' }, routes)
-//   .then(res => logger.info('Success! %o', res.body))
-//   .catch(err => logger.error('An error happened %o', err))
+//   .then(res => console.log('Success! %o', res.body))
+//   .catch(err => console.error('An error happened %o', err))

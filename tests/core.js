@@ -2,14 +2,6 @@ const { listen, router, methods, response } = require('../lib')
 const { send } = response
 const { route, fixed } = router
 const { GET, POST } = methods
-const logger = require('pino')({
-  name: 'core:test',
-  timestamp: false,
-  base: {
-    pid: null,
-    hostname: null
-  }
-})
 
 function homeHandler (ctx) {
   return send(200, 'Hello Home!')
@@ -33,5 +25,5 @@ const about = route([fixed('about')], [
 ])
 
 listen({ port: 3000 }, [home, about])
-  .then(() => logger.info('Server Running'))
-  .catch(logger.error)
+  .then(() => console.log('Server Running'))
+  .catch(console.error)
