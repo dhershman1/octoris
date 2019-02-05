@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "route": "node tests/routing.js | pino-colada",
-    "core": "node tests/core.js | pino-colada",
+    "route": "node tests/routing.js",
+    "core": "node tests/core.js",
     "lint:fix": "standard --fix lib/**/*.js",
     "lint": "standard lib/**/*.js",
     "setup": "node scripts/setup.js | pino-colada",
@@ -38,7 +38,6 @@
   "homepage": "https://github.com/dhershman1/octoris#readme",
   "devDependencies": {
     "globby": "9.0.0",
-    "pino-colada": "1.4.4",
     "rimraf": "2.6.3",
     "standard": "12.0.1"
   },
