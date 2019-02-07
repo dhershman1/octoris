@@ -6,29 +6,44 @@ There's a few questions we need to answer with middleware:
 
 ## Engine
 
-The engine idea currently looks a little like this, using the "use" util
+The engine idea currently looks a little like this, using the `use` function from the router portion of octoris
 
-> **Note** This may be moved to the `octoris/middleware` if the need for more functionality in this area grows
+This will directly influence the middleware to always happen when this route is called.
+
+I've broken it down into 3 ways to achieve this at different levels. We may or may not need each one to be its own thing but I figured starting with more is probably better for now.
+
+## Method Middleware
+
+In some instances we will want middleware to be used for individual methods rather than the entire route. In this instance maybe we allow our method functions to take a 2nd param which is the middleware?
 
 ```js
 const { route, fixed } = require('octoris/router')
-const { use } = require('octoris/utils')
 const { GET, POST } = require('octoris/methods')
 const someMiddleware = require('someMiddleware')
 const someAuthMiddleware = require('someAuthMiddleware')
 
 route([fixed('home')], [
-  GET(getHomeHandler),
-  use(someMiddleware),
-
-  POST(postHomeHandler),
-  use(someAuthMiddleware)
+  GET(getHomeHandler, [someMiddleware]),
+  POST(postHomeHandler, [someAuthMiddleware])
 ])
+```
 
-// Or possibly ?
+I have a few problems with this, the primary one is that it's sort of "assumed" you will know what that 2nd parameter is, it's not very straight forward or verbose in "this is how you set middleware for this method" kind of deal.
+
+## Route Middleware
+
+In the instance you want middleware to be applied to the entire route no matter what method is used we can apply it like so
+
+```js
+const { route, fixed, use } = require('octoris/router')
+const { GET, POST } = require('octoris/methods')
+const someMiddleware = require('someMiddleware')
+const someAuthMiddleware = require('someAuthMiddleware')
+
 route([fixed('home')], [
-  [GET(getHomeHandler), use(someMiddleware)],
-  [POST(postHomeHandler), use(someAuthMiddleware)]
+  use([someMiddleware, someAuthMiddleware]),
+  GET(getHomeHandler),
+  POST(postHomeHandler)
 ])
 ```
 
@@ -36,38 +51,27 @@ This allows us to apply middleware directly to routes individually down to even 
 
 The problem is this might again be over complex and a little hard to read at first glance?
 
-## Middleware Branch Concept
+## Global Middleware
 
-Another theory/concept could be that middleware is given a branch within the Radix Tree of routes. For instance `/home` with a `GET` forms a Radix tree that looks like this:
+So in some cases we may want middleware to be accessible to all of our routes vs individual methods/routes
+
+In this instance I am thinking maybe attaching the middleware to the `composeRoutes` function or maybe we do apply it to the `listen` function. I don't think that's a good spot however.
+
 ```js
-Map {
-  'home': Map {
-    type: 'static'
-    optional: false,
-    methods: Map {
-      'GET': Function
-    }
-  }
-}
+const { route, fixed, composeRoutes } = require('octoris/router')
+const { GET, POST } = require('octoris/methods')
+const someMiddleware = require('someMiddleware')
+const someAuthMiddleware = require('someAuthMiddleware')
+
+const home = route([fixed('home')], [
+  GET(getHomeHandler),
+  POST(postHomeHandler)
+])
+
+composeRoutes({
+  logger: true,
+  middleware: [someMiddleware, someAuthMiddleware]
+})
 ```
 
-So what if a middleware being attached to a route method just becomes a value within that Map something like this:
-```js
-Map {
-  'home': Map {
-    type: 'static'
-    optional: false,
-    methods: Map {
-      'GET': Map(?*) {
-        handler: Function,
-        middleware: Function[] || Set
-      }
-    }
-  }
-}
-```
-> **(?*)**: This doesn't need to be a Map, this could easily just be an Object here
-
-With the above when the `/home` route is triggered it will look at the `GET` handler and see if any middleware is also there, if so use that first and then the handler.
-
-> **Important**: This layout would be used even if there was no attached middleware, in that instance `middleware` would just be an empty Array/Set
+This may or may not be the best approach?
