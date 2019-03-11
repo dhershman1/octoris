@@ -52,7 +52,7 @@ const main = concatRoutes([home], [account, dash])
 
 const routes = [main, about, place]
 
-inject({ method: 'GET', url: '/home?id=123' }, composeRoutes({ logger: { name: 'TESTING:ROUTES' } }, routes))
+inject({ method: 'GET', url: '/thingy?id=123' }, composeRoutes({ logger: { name: 'TESTING:ROUTES' } }, routes))
   .then(res => console.log('Success! %o', res.body))
   .catch(err => console.error('An error happened %o', err))
 
