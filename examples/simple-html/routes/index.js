@@ -5,6 +5,10 @@ const { send } = response
 const { route, fixed, composeRoutes } = router
 const { GET } = methods
 
+// These handlers don't work at the moment
+// This is because the handler methods don't work very nicely with async
+// Since most of the time they're expecting just the response to be returned
+// Not to be used within a callback like with fs here
 function homeHandler (ctx) {
   return fs.readFile(path.resolve(__dirname, 'pages', 'home.html'), (err, data) => {
     if (err) {
