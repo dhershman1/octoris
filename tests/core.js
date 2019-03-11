@@ -1,6 +1,6 @@
 const { listen, router, methods, response } = require('../lib')
 const { send } = response
-const { route, fixed } = router
+const { route, fixed, composeRoutes } = router
 const { GET, POST } = methods
 
 function homeHandler (ctx) {
@@ -24,6 +24,8 @@ const about = route([fixed('about')], [
   POST(aboutPost)
 ])
 
-listen({ port: 3000 }, [home, about])
-  .then(() => console.log('Server Running'))
+const routes = composeRoutes({ logger: { name: 'TESTING:ROUTES' } }, [home, about])
+
+listen({ port: 3000 }, routes)
+  .then(addr => console.log(`Server Running on ${addr}`))
   .catch(console.error)
