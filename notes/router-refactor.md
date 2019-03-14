@@ -26,7 +26,7 @@ const aboutHandler = () => response.send(200, 'Hello About')
 const home = route([fixed('home')])
 const about = route([fixed('about')])
 
-const routing = compostRoutes([
+const routing = composeRoutes([
   GET(homeHandler, home),
   GET(aboutHandler, about),
   POST(aboutHandler, about)
