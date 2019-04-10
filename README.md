@@ -14,11 +14,11 @@ This will hopefully some day soon be my envisioning of a proper functional http 
 
 Check out the notes folder for markdown files containing ideas and thought processes.
 
-## Current Phase: Early Development/Planning
+## Current Phase: Early Alpha
 
-This repo/project is currently in the early stages of development still. Which means there are things that may still change heavily and theory still to be discovered.
+The project is able to run servers, and run very _basic_ routes. This in no way should be used in a production setup.
 
-There is still concepts that needs to be proven and battle tested
+Feel free to mess with what is available however and report any issues you may have come accross. Check out the [tests directory](./tests) for info on setup and use.
 
 ## Planned
 

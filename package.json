@@ -9,6 +9,7 @@
     "core": "node tests/core.js",
     "lint:fix": "standard --fix lib/**/*.js",
     "lint": "standard lib/**/*.js",
+    "html": "node examples/simple-html/index.js",
     "setup": "node scripts/setup.js | pino-colada",
     "clean": "rimraf ./*.js"
   },
