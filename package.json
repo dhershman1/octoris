@@ -40,14 +40,14 @@
   "devDependencies": {
     "globby": "10.0.1",
     "rimraf": "3.0.0",
-    "standard": "14.0.2"
+    "standard": "14.3.1"
   },
   "dependencies": {
     "encodeurl": "1.0.2",
     "http-errors": "1.7.3",
-    "kyanite": "0.14.0",
-    "light-my-request": "3.4.1",
-    "pino": "5.12.2",
+    "kyanite": "1.0.0",
+    "light-my-request": "3.6.2",
+    "pino": "5.13.5",
     "safe-buffer": "5.2.0",
     "uri-js": "4.2.2"
   }
