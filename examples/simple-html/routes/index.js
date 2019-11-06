@@ -1,15 +1,22 @@
 const path = require('path')
+const fs = require('fs')
+const util = require('util')
 const { router, response, methods } = require('../../../lib/index')
-const { render } = response
+const { send } = response
 const { route, fixed, composeRoutes } = router
 const { GET } = methods
+const readFile = util.promisify(fs.readFile)
 
 function homeHandler () {
-  return render(path.resolve(__dirname, 'pages', 'home.html'))
+  return readFile(path.resolve(__dirname, 'pages', 'home.html'))
+    .then(data => send(200, data))
+    .catch(err => send(500, err))
 }
 
-function aboutHandler (ctx) {
-  return render(path.resolve(__dirname, 'pages', 'about.html'))
+function aboutHandler () {
+  return readFile(path.resolve(__dirname, 'pages', 'about.html'))
+    .then(data => send(200, data))
+    .catch(err => send(500, err))
 }
 
 const home = route([fixed('home')], [
