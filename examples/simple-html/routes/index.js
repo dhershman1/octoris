@@ -6,17 +6,27 @@ const { send } = response
 const { route, fixed, composeRoutes } = router
 const { GET } = methods
 const readFile = util.promisify(fs.readFile)
+const OK = send(200)
+const ERR = send(500)
 
-function homeHandler () {
+function homeHandler ({ response }) {
   return readFile(path.resolve(__dirname, 'pages', 'home.html'))
-    .then(data => send(200, data))
-    .catch(err => send(500, err))
+    .then(data => {
+      response
+        .setHeaders({
+          cool: 'kid',
+          foo: 'bar'
+        })
+
+      return send(200, data)
+    })
+    .catch(ERR)
 }
 
 function aboutHandler () {
   return readFile(path.resolve(__dirname, 'pages', 'about.html'))
-    .then(data => send(200, data))
-    .catch(err => send(500, err))
+    .then(OK)
+    .catch(ERR)
 }
 
 const home = route([fixed('home')], [

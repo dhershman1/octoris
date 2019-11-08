@@ -1,6 +1,10 @@
 const { GET, POST } = require('../lib/methods')
-const { route, fixed } = require('../lib/router')
+const { route, fixed, pipe } = require('../lib/router')
 const { send } = require('../lib/response')
+
+function middleware (a) {
+  return a
+}
 
 const handler = ctx => send(ctx)
 
@@ -14,4 +18,6 @@ const handler = ctx => send(ctx)
 //   GET([fixed('home')], handler)
 // ])
 
-console.log(route([fixed('home'), fixed('ID')], [GET(handler), POST(handler)]))
+pipe([fixed('home'), fixed('main')], [GET(handler)], [middleware])
+
+// console.log(route([fixed('home'), fixed('ID')], [GET(handler), POST(handler)]))

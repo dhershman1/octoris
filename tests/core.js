@@ -1,6 +1,6 @@
 const { listen, router, methods, response } = require('../lib')
 const { send } = response
-const { route, fixed, composeRoutes } = router
+const { route, fixed, composeRoutes, pipe } = router
 const { GET, POST } = methods
 
 function homeHandler (ctx) {
@@ -19,10 +19,10 @@ const home = route([fixed('home')], [
   GET(homeHandler)
 ])
 
-const about = route([fixed('about')], [
+const about = pipe([fixed('about'), fixed('main')], [
   GET(aboutHandler),
   POST(aboutPost)
-])
+], [() => 'test'])
 
 const routes = composeRoutes({ logger: { name: 'TESTING:ROUTES' } }, [home, about])
 
