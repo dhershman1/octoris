@@ -10,36 +10,50 @@
   </a>
 </p>
 
-This will hopefully some day soon be my envisioning of a proper functional http framework.
+A small and simple node server framework.
 
-Check out the notes folder for markdown files containing ideas and thought processes.
+## Install
 
-## Current Phase: Early Alpha
+```
+Not yet released onto NPM
+```
 
-The project is able to run servers, and run very _basic_ routes. This in no way should be used in a production setup.
+## Usage
 
-Feel free to mess with what is available however and report any issues you may have come accross. Check out the [tests directory](./tests) for info on setup and use.
+Create a basic server:
+```js
+const { listen } = require('octoris')
+const routes = require('./routes')
 
-## Planned
+listen({ port: 3000 }, routes)
+  .then(addr => console.log(`Server Listening on ${addr}`))
+  .catch(console.error)
+```
 
-Planned functionality and features looks a little like this at the moment:
+routes.js:
+```js
+const { GET } = require('octoris/methods')
+const { route, fixed, composeRoutes } = require('octoris/router')
+const { send } = require('octoris/response')
 
-- Fully functional from the ground up, build routes with pipes/reducers/etc
-- An easy to use injection method for integration testing
-- A swagger like setup for open api documentation of your app
-- Fast Radix Tree esk based routing
-- No `magic` like strings everything runs through functions to prime it for what it needs to do
-- And much more! (I will list them here as needed)
+function homeHandler () {
+  return new Promise(resolve => resolve(send(200, 'Hello Home!')))
+}
 
-## Testing
+function aboutHandler () {
+  return new Promise(resolve => resolve(send(200, 'Hello About!')))
+}
 
-Finally! Some POC Code is being added! Currently you can do the following (After you clone the repo and `npm i` in the directory)
+const home = route([fixed('home')], [
+  GET(homeHandler)
+])
 
-All of these commands are ran with `debug` for output logging
+const about = route([fixed('about')], [
+  GET(aboutHandler)
+])
 
-- `npm run route` - This will give you a nice log of an example route map built by `octoris`
-- `npm run core` - This will run the core of `octoris` with example route maps allows for the test of route builds
-- More coming soon!
+module.exports = composeRoutes({ logger: true }, [about, home])
+```
 
 ## Contribute
 
