@@ -45,9 +45,9 @@
   "dependencies": {
     "encodeurl": "1.0.2",
     "http-errors": "1.7.3",
-    "kyanite": "1.0.0",
-    "light-my-request": "3.6.2",
-    "pino": "5.13.5",
+    "kyanite": "1.0.2",
+    "light-my-request": "3.6.3",
+    "pino": "5.15.0",
     "safe-buffer": "5.2.0",
     "uri-js": "4.2.2"
   }
