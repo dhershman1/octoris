@@ -4,11 +4,11 @@ const { route, fixed, composeRoutes } = router
 const { GET } = methods
 
 function homeHandler () {
-  return send(200, 'Hello Home!')
+  return new Promise(resolve => resolve(send(200, 'Hello Home!')))
 }
 
 function aboutHandler () {
-  return send(200, 'Hello About!')
+  return new Promise(resolve => resolve(send(200, 'Hello About!')))
 }
 
 const home = route([fixed('home')], [
