@@ -9,7 +9,14 @@ const readFile = util.promisify(fs.readFile)
 const OK = send(200)
 const ERR = send(500)
 
+function middleware (ctx) {
+  ctx.response.cool = 'What what!'
+
+  return ctx
+}
+
 function homeHandler ({ response }) {
+  console.log(response.cool)
   return readFile(path.resolve(__dirname, 'pages', 'home.html'))
     .then(data => {
       response
@@ -31,7 +38,7 @@ function aboutHandler () {
 
 const home = route([fixed('home')], [
   GET(homeHandler)
-])
+], [middleware])
 
 const about = route([fixed('about')], [
   GET(aboutHandler)

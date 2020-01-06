@@ -32,9 +32,10 @@ listen({ port: 3000 }, routes)
 
 routes.js:
 ```js
-const { GET } = require('octoris/methods')
-const { route, fixed, composeRoutes } = require('octoris/router')
-const { send } = require('octoris/response')
+const { router, response, methods } = require('octoris')
+const { send } = response
+const { route, fixed, composeRoutes } = router
+const { GET } = methods
 
 function homeHandler () {
   return new Promise(resolve => resolve(send(200, 'Hello Home!')))
