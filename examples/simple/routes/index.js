@@ -11,7 +11,7 @@ function aboutHandler () {
   return new Promise(resolve => resolve(send(200, 'Hello About!')))
 }
 
-const home = route([fixed('home')], [
+const home = route([fixed('/')], [
   GET(homeHandler)
 ])
 
