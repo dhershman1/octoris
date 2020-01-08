@@ -1,6 +1,6 @@
 const { router, response, methods, middleware } = require('../../../lib/index')
 const { send } = response
-const { route, fixed, composeRoutes } = router
+const { route, fixed, param, composeRoutes } = router
 const { GET } = methods
 
 function homeHandler () {
@@ -15,7 +15,7 @@ const home = route([fixed('/')], [
   GET(homeHandler)
 ])
 
-const about = route([fixed('about')], [
+const about = route([fixed('about'), param('us')], [
   GET(aboutHandler)
 ])
 
