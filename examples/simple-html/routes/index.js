@@ -25,7 +25,7 @@ function homeHandler ({ response }) {
           foo: 'bar'
         })
 
-      return send(200, data)
+      return OK(data)
     })
     .catch(ERR)
 }
