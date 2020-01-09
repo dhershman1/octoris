@@ -15,7 +15,7 @@ A small and simple node server framework.
 ## Install
 
 ```
-Not yet released onto NPM
+npm i octoris
 ```
 
 ## Usage
@@ -55,6 +55,10 @@ const about = route([fixed('about')], [
 
 module.exports = composeRoutes({ logger: true }, [about, home])
 ```
+
+## Documentation
+
+Check out the github wiki as a temporary documentation spot until the site is up and running! https://github.com/dhershman1/octoris/wiki
 
 ## Contribute
 
