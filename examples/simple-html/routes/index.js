@@ -1,18 +1,20 @@
 const path = require('path')
 const fs = require('fs')
-const util = require('util')
+const { promisify } = require('util')
 const { router, response, methods } = require('../../../lib/index')
 const { send } = response
 const { route, fixed, composeRoutes } = router
 const { GET } = methods
-const readFile = util.promisify(fs.readFile)
+const readFile = promisify(fs.readFile)
 const OK = send(200)
 const ERR = send(500)
 
 function middleware (ctx) {
-  ctx.response.cool = 'What what!'
+  return new Promise(resolve => {
+    ctx.response.cool = 'What what!'
 
-  return ctx
+    return resolve(ctx)
+  })
 }
 
 function homeHandler ({ response }) {
