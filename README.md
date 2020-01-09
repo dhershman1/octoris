@@ -1,8 +1,8 @@
-<h1 align=center>
+<p align=center>
   <a href="#" title="Octoris Repo">
     <img alt="Octoris Logo" src="https://user-images.githubusercontent.com/8997380/49382441-6a3a9280-f6e4-11e8-93b0-675e6f77112f.png">
   </a>
-</h1>
+</p>
 
 <p align=center>
   <a href="https://github.com/standard/standard">
