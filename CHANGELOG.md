@@ -1,3 +1,9 @@
 # Octoris Changelog
 
-**No Releases out yet**
+## v0.1.1
+
+- Readme patch
+
+## v0.1.0
+
+- Initial Release
