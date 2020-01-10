@@ -1,4 +1,4 @@
-const { router, response, methods, middleware } = require('../../../lib/index')
+const { router, response, methods } = require('../../../lib/index')
 const { send } = response
 const { route, all, fixed, param, composeRoutes } = router
 const { GET } = methods
@@ -27,4 +27,4 @@ const catchAll = route([all()], [
   GET(fourOFour)
 ])
 
-module.exports = composeRoutes({ logger: true }, [about, home, catchAll], [middleware.serveStatic('public')])
+module.exports = composeRoutes({ logger: true }, [about, home, catchAll])
