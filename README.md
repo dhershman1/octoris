@@ -62,6 +62,13 @@ module.exports = composeRoutes({ logger: true }, [about, home])
 
 Check out the github wiki as a temporary documentation spot until the site is up and running! https://github.com/dhershman1/octoris/wiki
 
+## Official Middleware
+
+Here is a list of official released middleware for Octoris
+
+- [serve-static](https://github.com/octoris/serve-static)
+- [body-parser](https://github.com/octoris/body-parser)
+
 ## Contribute
 
 [Checkout the contribute file here](https://github.com/dhershman1/octoris/blob/master/.github/CONTRIBUTING.md)
