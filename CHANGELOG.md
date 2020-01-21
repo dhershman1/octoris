@@ -1,5 +1,18 @@
 # Octoris Changelog
 
+## v0.3.0
+
+### New
+
+- You can now apply fixed routes by either using the `fixed` function or just a `string`
+
+## Improved
+
+- Middleware doesn't need to return a promise anymore for non async actions
+- Routes that aren't using async tools (such as fs) can just return a `response` method
+- Updated Kyanite to v1.1.0
+
+
 ## v0.2.0
 
 ### BREAKING
