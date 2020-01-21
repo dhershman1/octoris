@@ -10,11 +10,9 @@ const OK = send(200)
 const ERR = send(500)
 
 function middleware (ctx) {
-  return new Promise(resolve => {
-    ctx.response.cool = 'What what!'
+  ctx.response.cool = 'What what!'
 
-    return resolve(ctx)
-  })
+  return ctx
 }
 
 function homeHandler ({ response }) {
@@ -38,7 +36,7 @@ function aboutHandler () {
     .catch(ERR)
 }
 
-const home = route([fixed('home')], [
+const home = route(['home'], [
   GET(homeHandler)
 ], [middleware])
 
