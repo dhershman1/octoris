@@ -18,9 +18,8 @@ test('response.json(code, data)', t => {
     t.same(resObj.code, 200)
     t.end()
   })
-  const json = response.json(200, { a: 1 })
 
-  json({ response: resObj })
+  response.json(200, { a: 1 }).then(fn => fn(({ response: resObj })))
 })
 
 test('response.redirect(url, data)', t => {
@@ -30,7 +29,7 @@ test('response.redirect(url, data)', t => {
     t.end()
   })
 
-  response.redirect('google.com', 'redirect')({ response: resObj, request: {} })
+  response.redirect('google.com', 'redirect').then(fn => fn({ response: resObj, request: {} }))
 })
 
 test('response.send(code, data)', t => {
@@ -40,5 +39,5 @@ test('response.send(code, data)', t => {
     t.end()
   })
 
-  response.send(200, 'google.com')({ response: resObj, request: {} })
+  response.send(200, 'google.com').then(fn => fn({ response: resObj, request: {} }))
 })
