@@ -5,6 +5,12 @@
 </p>
 
 <p align=center>
+  <a href="https://npmjs.com/package/octoris">
+    <img alt="NPM version" src="https://img.shields.io/npm/v/octoris?style=flat-square" />
+  </a>
+</p>
+
+<p align=center>
   <a href="https://github.com/standard/standard">
     <img alt="Standard Js" src="https://cdn.rawgit.com/standard/standard/master/badge.svg">
   </a>

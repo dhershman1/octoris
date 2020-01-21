@@ -6,7 +6,7 @@
 
 - You can now apply fixed routes by either using the `fixed` function or just a `string`
 
-## Improved
+### Improved
 
 - Middleware doesn't need to return a promise anymore for non async actions
 - Routes that aren't using async tools (such as fs) can just return a `response` method
