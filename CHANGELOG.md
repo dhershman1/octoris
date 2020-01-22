@@ -5,6 +5,7 @@
 ### New
 
 - Added new badges to the README
+- You can now have catch alls at different layers of routing, instead of only being used at the root level
 
 ### Fixed
 
