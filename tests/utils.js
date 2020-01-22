@@ -13,6 +13,20 @@ test('utils.mergeMaps()', t => {
 test('utils.findInMap()', t => {
   const data = new Map([['a', 1], ['b', 2], ['c', 3]])
 
-  t.same(utils.findInMap(x => x > 2, data), 3)
+  t.same(utils.findInMap(x => x[1] > 2, data), ['c', 3])
+  t.end()
+})
+
+test('utils.set()', t => {
+  const data = new Map()
+
+  t.same(utils.set('foo', 'bar', data), new Map([['foo', 'bar']]), 'Set key within map')
+  t.end()
+})
+
+test(utils.get(), t => {
+  const data = new Map([['foo', 'bar']])
+
+  t.same(utils.get('foo', data), 'bar', 'Retrieved value from within map')
   t.end()
 })
