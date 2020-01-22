@@ -33,7 +33,7 @@ jobs:
           command: npm run report
       # send to codecov
       - codecov/upload:
-          upload_name: k-tests
+          upload_name: octo-tests
           token: $CODECOV_TOKEN
           file: coverage.lcov
           flags: unittests
