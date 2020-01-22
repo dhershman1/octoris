@@ -38,9 +38,9 @@ jobs:
           file: coverage.lcov
           flags: unittests
       # run coverage check
-      - run:
-          name: coverage
-          command: npm run check-cov
+      # - run:
+      #     name: coverage
+      #     command: npm run check-cov
   # docs:
   #   docker:
   #     # specify the version you desire here
