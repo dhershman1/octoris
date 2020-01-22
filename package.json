@@ -5,12 +5,13 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "tape tests/*.js | tap-spec",
-    "route": "node tests/routing.js",
-    "core": "node tests/core.js",
     "lint:fix": "standard --fix lib/**/*.js",
     "lint": "standard lib/**/*.js",
+    "local:cov": "nyc --reporter=html npm test",
+    "test:cov": "nyc npm test",
+    "check-cov": "nyc check-coverage --lines 95 --functions 100 --branches 95",
+    "report": "nyc report --reporter=text-lcov > coverage.lcov",
     "html": "node examples/simple-html/index.js",
-    "setup": "node scripts/setup.js | pino-colada",
     "clean": "rimraf ./*.js"
   },
   "directories": {
@@ -39,6 +40,7 @@
   "homepage": "https://github.com/dhershman1/octoris#readme",
   "devDependencies": {
     "globby": "10.0.1",
+    "nyc": "15.0.0",
     "rimraf": "3.0.0",
     "standard": "14.3.1",
     "tap-spec": "5.0.0",

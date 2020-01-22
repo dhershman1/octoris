@@ -8,6 +8,9 @@
   <a href="https://npmjs.com/package/octoris">
     <img alt="NPM version" src="https://img.shields.io/npm/v/octoris?style=flat-square" />
   </a>
+  <a href="https://npmjs.com/package/octoris">
+    <img alt="NPM version" src="https://img.shields.io/npm/l/octoris?style=flat-square" />
+  </a>
 </p>
 
 <p align=center>
