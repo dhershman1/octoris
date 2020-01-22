@@ -1,5 +1,19 @@
 # Octoris Changelog
 
+## v0.3.1
+
+### New
+
+- Added new badges to the README
+
+### Fixed
+
+- You can now send a `pino` options object to the logger option and it will register accordingly
+
+### Improved
+
+- Lots of unit test additions and improvements
+
 ## v0.3.0
 
 ### New
