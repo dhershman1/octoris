@@ -14,6 +14,16 @@
     "html": "node examples/simple-html/index.js",
     "clean": "rimraf ./*.js"
   },
+  "nyc": {
+    "include": [
+      "lib/**"
+    ],
+    "exclude": [
+      "tests/**",
+      "lib/_internals",
+      "dist/**"
+    ]
+  },
   "directories": {
     "lib": "lib"
   },
