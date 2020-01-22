@@ -9,13 +9,13 @@
     <img alt="NPM version" src="https://img.shields.io/npm/v/octoris?style=flat-square" />
   </a>
   <a href="https://npmjs.com/package/octoris">
-    <img alt="NPM version" src="https://img.shields.io/npm/l/octoris?style=flat-square" />
+    <img alt="License" src="https://img.shields.io/npm/l/octoris?style=flat-square" />
   </a>
-  <a href="https://npmjs.com/package/octoris">
-    <img alt="NPM version" src="https://img.shields.io/circleci/build/github/dhershman1/octoris/master?style=flat-square" />
+  <a href="https://app.circleci.com/github/dhershman1/octoris/pipelines">
+    <img alt="Build Status" src="https://img.shields.io/circleci/build/github/dhershman1/octoris/master?style=flat-square" />
   </a>
-  <a href="https://npmjs.com/package/octoris">
-    <img alt="NPM version" src="https://img.shields.io/codecov/c/github/dhershman1/octoris?style=flat-square" />
+  <a href="https://codecov.io/gh/dhershman1/octoris">
+    <img alt="Coverage Report" src="https://img.shields.io/codecov/c/github/dhershman1/octoris?style=flat-square" />
   </a>
 </p>
 
