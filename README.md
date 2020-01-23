@@ -73,10 +73,6 @@ const about = route([fixed('about')], [
 module.exports = composeRoutes({ logger: true }, [about, home])
 ```
 
-## Examples
-
-You can few some examples of using octoris [here](https://github.com/octoris/examples)
-
 ## Documentation
 
 Check out the github wiki as a temporary documentation spot until the site is up and running! https://github.com/dhershman1/octoris/wiki
