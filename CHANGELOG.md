@@ -1,5 +1,16 @@
 # Octoris Changelog
 
+## v0.4.0
+
+### New
+
+- Added the ability to set a file path to have logs from the logger written
+
+### Improved
+
+- Fixed the handleRoute promise chain so properly works as a chain instead of nesting
+- Improved how the logger functionality is working
+
 ## v0.3.1
 
 ### New
