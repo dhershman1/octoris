@@ -8,11 +8,11 @@ Please make sure all PRs are pointed at and processed through the main Developme
 
 ## Commit Messages
 
-Please write and use meaningful and helpful commit messages for your contributions and changes.
+Please write and use meaningful and helpful commit messages for your contributions and changes. I am currently not using it, but please feel free to use [commitizen](https://www.npmjs.com/package/commitizen) if you're more comfortable or prefer to use it
 
 ## Testing
 
-Since this project is still in it's planning phase, testing rules will come along later
+Current testing framework is [Tape](https://www.npmjs.com/package/tape) Please foollow the testing setup for any new, or changing functionality. Obviously all tests should be passing when you go to open your PR.
 
 ## Documentation
 
