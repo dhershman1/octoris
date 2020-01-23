@@ -24,7 +24,7 @@ test('utils.set()', t => {
   t.end()
 })
 
-test(utils.get(), t => {
+test('utils.get()', utils.get(), t => {
   const data = new Map([['foo', 'bar']])
 
   t.same(utils.get('foo', data), 'bar', 'Retrieved value from within map')
