@@ -10,6 +10,7 @@
 
 - Fixed the handleRoute promise chain so properly works as a chain instead of nesting
 - Improved how the logger functionality is working
+- npm ignore blocks unneeded files from getting packed into the npm package
 
 ## v0.3.1
 
