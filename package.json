@@ -1,6 +1,6 @@
 {
   "name": "octoris",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A functional and friendly node http framework",
   "main": "lib/index.js",
   "scripts": {
@@ -47,7 +47,7 @@
   "bugs": {
     "url": "https://github.com/dhershman1/octoris/issues"
   },
-  "homepage": "https://github.com/dhershman1/octoris#readme",
+  "homepage": "https://octoris.gitbook.io/octoris/",
   "devDependencies": {
     "globby": "10.0.1",
     "nyc": "15.0.0",
