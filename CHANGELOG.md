@@ -5,14 +5,14 @@
 ### New
 
 - Documentation site is up on gitbooks, fixed all links to point there
+- `debug` is now part of the main root API
+    - Documentation to follow shortly
 
 ## v0.4.0
 
 ### New
 
-- Documentation site is up on gitbooks, fixed all links to point there
-- `debug` is now part of the main root API
-    - Documentation to follow shortly
+- Added the ability to set a file path to have logs from the logger written
 
 ### Improved
 
