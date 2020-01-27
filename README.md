@@ -75,7 +75,7 @@ module.exports = composeRoutes({ logger: true }, [about, home])
 
 ## Documentation
 
-Check out the github wiki as a temporary documentation spot until the site is up and running! https://github.com/dhershman1/octoris/wiki
+You can find the documentation [here](https://octoris.gitbook.io/octoris)
 
 ## Official Middleware
 
