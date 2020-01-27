@@ -1,5 +1,11 @@
 # Octoris Changelog
 
+## v0.4.1
+
+### New
+
+- Documentation site is up on gitbooks, fixed all links to point there
+
 ## v0.4.0
 
 ### New
