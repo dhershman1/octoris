@@ -6,6 +6,7 @@
 
 - Added multipart to middleware list
 - Removed warning from README as Octoris is now on a stable release cycle (not 1.0 yet however)
+- Removed unused internals
 
 ## v0.4.1
 
