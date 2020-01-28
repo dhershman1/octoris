@@ -27,8 +27,6 @@
 
 A small and simple node server framework.
 
-> **Important**: This is still under heavy development, I do not recommend production use yet, but please play with it and report problems/bugs
-
 ## Install
 
 ```
@@ -83,6 +81,7 @@ Here is a list of official released middleware for Octoris
 
 - [serve-static](https://github.com/octoris/serve-static)
 - [body-parser](https://github.com/octoris/body-parser)
+- [multipart](https://github.com/octoris/multipart)
 
 ## Contribute
 
