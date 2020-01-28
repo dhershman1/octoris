@@ -83,6 +83,7 @@ Here is a list of official released middleware for Octoris
 
 - [serve-static](https://github.com/octoris/serve-static)
 - [body-parser](https://github.com/octoris/body-parser)
+- [multipart](https://github.com/octoris/multipart)
 
 ## Contribute
 
