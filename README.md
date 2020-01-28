@@ -27,8 +27,6 @@
 
 A small and simple node server framework.
 
-> **Important**: This is still under heavy development, I do not recommend production use yet, but please play with it and report problems/bugs
-
 ## Install
 
 ```
