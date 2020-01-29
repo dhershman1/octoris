@@ -1,3 +1,14 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.4.3](https://github.com/dhershman1/octoris/compare/v0.4.0...v0.4.3) (2020-01-29)
+
+
+### Features
+
+* **commitizen:** converting to the commitizen tool ([a5492c5](https://github.com/dhershman1/octoris/commit/a5492c5c16533e3d77ebbc48aa0b4180d6e72846))
+
 # Octoris Changelog
 
 ## v0.4.2
