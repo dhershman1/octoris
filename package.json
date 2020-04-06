@@ -13,7 +13,8 @@
     "report": "nyc report --reporter=text-lcov > coverage.lcov",
     "html": "node examples/simple-html/index.js",
     "clean": "rimraf ./*.js",
-    "commit": "git add . && npx git-cz",
+    "ac": "git add . && npx git-cz",
+    "commit": "npx git-cz",
     "release": "npx standard-version"
   },
   "nyc": {
