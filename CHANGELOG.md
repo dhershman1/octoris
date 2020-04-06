@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/dhershman1/octoris/compare/v0.4.4...v0.4.5) (2020-04-06)
+
 ### [0.4.3](https://github.com/dhershman1/octoris/compare/v0.4.0...v0.4.3) (2020-01-29)
 
 
