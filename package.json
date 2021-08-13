@@ -12,10 +12,7 @@
     "check-cov": "nyc check-coverage --lines 85 --functions 90 --branches 85",
     "report": "nyc report --reporter=text-lcov > coverage.lcov",
     "html": "node examples/simple-html/index.js",
-    "clean": "rimraf ./*.js",
-    "ac": "git add . && npx git-cz",
-    "commit": "npx git-cz",
-    "release": "npx standard-version"
+    "clean": "rimraf ./*.js"
   },
   "nyc": {
     "include": [
