@@ -3,9 +3,11 @@ const router = require('../lib/router')
 const { GET } = require('../lib/methods')
 const { send } = require('../lib/response')
 
-const getter = GET(() => true)
-const home = router.route([router.fixed('home')], [GET(ctx => send(200, ctx))])
-const about = router.route([router.fixed('about')], [GET(() => Promise.resolve(() => true))], [() => true])
+const cachedFn = ctx => send(200, ctx)
+const basicFn = () => true
+const getter = GET(cachedFn)
+const home = router.route([router.fixed('home')], [GET(cachedFn)])
+const about = router.route([router.fixed('about')], [GET(cachedFn)], [basicFn])
 
 const req = {
   url: 'http://example.com/home?q=foobar',
@@ -33,33 +35,27 @@ test('router.all()', t => {
   t.end()
 })
 
-test('router.route(routePath, methods, middleware)', t => {
-  const str = router.route(['string'], [GET(() => true)])
+test('router.route(routePath, methods, middleware) basic', t => {
+  const actual = home.get('home')
+  const methods = actual.get('methods')
 
-  t.same(home, new Map([
-    ['home', new Map([
-      ['name', 'home'],
-      ['type', 'static'],
-      ['methods', new Map([['GET', getter]])],
-      ['middleware', []]
-    ])]
-  ]))
-  t.same(about, new Map([
-    ['about', new Map([
-      ['name', 'about'],
-      ['type', 'static'],
-      ['methods', new Map([['GET', getter]])],
-      ['middleware', [() => true]]
-    ])]
-  ]))
-  t.same(str, new Map([
-    ['string', new Map([
-      ['name', 'string'],
-      ['type', 'static'],
-      ['methods', new Map([['GET', getter]])],
-      ['middleware', []]
-    ])]
-  ]))
+  t.same(actual.get('name'), 'home', 'name is home')
+  t.same(actual.get('type'), 'static', 'type is static')
+  t.same(actual.get('middleware'), [], 'home has no middleware')
+  t.same(methods.get('GET').middleware, [], 'home GET has no middleware')
+  t.same(typeof methods.get('GET').fn, 'function', 'GET fn is a function')
+  t.end()
+})
+
+test('router.route() with middleware', t => {
+  const actual = about.get('about')
+  const methods = actual.get('methods')
+
+  t.same(actual.get('name'), 'about', 'name is about')
+  t.same(actual.get('type'), 'static', 'type is static')
+  t.same(actual.get('middleware').length, 1, 'about has middleware')
+  t.same(methods.get('GET').middleware, [], 'about GET has no middleware')
+  t.same(typeof methods.get('GET').fn, 'function', 'GET fn is a function')
   t.end()
 })
 
@@ -70,21 +66,21 @@ test('router.concatRoutes(root, routes)', t => {
     ['home', new Map([
       ['name', 'home'],
       ['type', 'static'],
-      ['methods', new Map([['GET', getter]])],
+      ['methods', getter],
       ['middleware', []],
       ['about', new Map([
         ['name', 'about'],
         ['type', 'static'],
-        ['methods', new Map([['GET', getter]])],
-        ['middleware', [() => true]]
+        ['methods', getter],
+        ['middleware', [basicFn]]
       ])]
     ])]
   ]))
   t.same(result.get('home').get('about'), new Map([
     ['name', 'about'],
     ['type', 'static'],
-    ['methods', new Map([['GET', getter]])],
-    ['middleware', [() => true]]
+    ['methods', getter],
+    ['middleware', [basicFn]]
   ]))
   t.end()
 })
@@ -149,7 +145,7 @@ test('router.composeRoutes(opts, routes, mw) already finished', t => {
 })
 
 test('router.composeRoutes(opts, routes, mw) route not found', t => {
-  const listener = router.composeRoutes({ logger: true }, [about])
+  const listener = router.composeRoutes({ logger: false }, [about])
   const res = {
     finished: false,
     writeHead (status, type) {
