@@ -23,8 +23,8 @@ watcher.on('all', (_, loc) => {
 
   // The test wasn't changed directly so go find it
   if (!dir.includes('tests')) {
-    const [, locName = name] = dir.split('/')
-    const fileName = name === 'index' ? locName : name
+    const location = dir.split('/')
+    const fileName = name === 'index' ? location[location.length - 1] : name
 
     filePath = path.join('tests', `${fileName}.js`)
   }
@@ -36,5 +36,4 @@ watcher.on('all', (_, loc) => {
       console.log(loc)
       console.log(filePath)
     })
-
 })
