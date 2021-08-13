@@ -4,7 +4,8 @@
   "description": "A functional and friendly node http framework",
   "main": "lib/index.js",
   "scripts": {
-    "test": "tape tests/*.js | tap-on -u",
+    "test": "tape tests/*.js | tap-on -s",
+    "test:watch": "node tests/_setup/watcher.js",
     "lint:fix": "standard --fix lib/**/*.js | snazzy",
     "lint": "standard lib/**/*.js | snazzy",
     "local:cov": "nyc --reporter=html npm test",
@@ -49,12 +50,12 @@
   },
   "homepage": "https://octoris.gitbook.io/octoris/",
   "devDependencies": {
-    "globby": "12.0.0",
+    "chokidar": "3.5.2",
     "nyc": "15.1.0",
     "rimraf": "3.0.2",
     "snazzy": "9.0.0",
     "standard": "16.0.3",
-    "tap-on": "0.1.1",
+    "tap-on": "0.2.0",
     "tape": "5.3.1"
   },
   "dependencies": {
