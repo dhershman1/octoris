@@ -4,7 +4,7 @@
   "description": "A functional and friendly node http framework",
   "main": "lib/index.js",
   "scripts": {
-    "test": "tape tests/*.js | tap-spec",
+    "test": "tape tests/*.js | tap-on",
     "lint:fix": "standard --fix lib/**/*.js",
     "lint": "standard lib/**/*.js",
     "local:cov": "nyc --reporter=html npm test",
@@ -52,19 +52,18 @@
   },
   "homepage": "https://octoris.gitbook.io/octoris/",
   "devDependencies": {
-    "globby": "10.0.1",
-    "nyc": "15.0.0",
-    "rimraf": "3.0.0",
-    "standard": "14.3.1",
-    "tap-spec": "5.0.0",
-    "tape": "4.13.0"
+    "nyc": "15.1.0",
+    "rimraf": "3.0.2",
+    "standard": "16.0.4",
+    "tap-on": "^0.3.1",
+    "tape": "5.5.2"
   },
   "dependencies": {
     "encodeurl": "1.0.2",
-    "kyanite": "1.1.0",
-    "light-my-request": "3.6.3",
-    "pino": "5.15.0",
-    "safe-buffer": "5.2.0",
-    "uri-js": "4.2.2"
+    "kyanite": "1.6.2",
+    "light-my-request": "4.9.0",
+    "pino": "7.9.2",
+    "safe-buffer": "5.2.1",
+    "uri-js": "4.4.1"
   }
 }
